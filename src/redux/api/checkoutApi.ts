@@ -88,6 +88,8 @@ import { baseApi } from "./baseApi";
 import { checkoutService } from "@/services/checkout";
 import { ApiError } from "./baseQuery";
 import { executeQuery } from "@/libs/api/helper";
+import { API } from "@/libs/api/endpoints";
+import { CheckoutOrderResponse } from "@/types/payment";
 
 export const checkoutApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -106,9 +108,26 @@ export const checkoutApi = baseApi.injectEndpoints({
 
       invalidatesTags: ["Cart", "Orders", "Customer"],
     }),
+
+    getOrder: builder.query<CheckoutOrderResponse, number>({
+      query: (id) => ({
+        url: `${API.CHECKOUT_ORDER}/${id}`,
+      }),
+
+      providesTags: (result, error, id) => [
+        {
+          type: "Orders",
+          id,
+        },
+      ],
+    }),
   }),
 
   overrideExisting: false,
 });
 
-export const { useGetPaymentMethodsQuery, useCheckoutMutation } = checkoutApi;
+export const {
+  useGetPaymentMethodsQuery,
+  useCheckoutMutation,
+  useGetOrderQuery,
+} = checkoutApi;
