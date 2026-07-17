@@ -1,15 +1,66 @@
 @import "tailwindcss";
 
+/* @import "./animations.css"; */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --text-primary: #010f1c;
+  --text-secondary: #678e61;
+  --text-other: #55585b;
+  --bg-primary: #014b30;
+  --bg-secondary: #569900;
+  --bg-other: #f3f3f3;
+  --bg-gradient: hsla(112, 19%, 55%, 0.6);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-secondary: var(--text-secondary);
+  --color-primary: var(--text-primary);
+  --color-text-pry: var(--text-primary);
+  --color-text-sdy: var(--text-secondary);
+  --color-bg-sdy: var(--bg-secondary);
+  --color-bg-pry: var(--bg-primary);
+  --color-bg-other: var(--bg-other);
+  --color-gradient: var(--bg-gradient);
+
+  --font-jost: var(--font-jost);
+
+  --breakpoint-xsm: 280px;
+  --breakpoint-350sm: 380px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  --breakpoint-3k: 1920px;
+  --breakpoint-4k: 2568px;
+}
+
+@custom-variant xmd {
+  @media (min-width: 600px) and (max-width: 767px) {
+    @slot;
+  }
+}
+
+@custom-variant smLg {
+  @media (min-width: 580px) and (max-width: 768px) {
+    @slot;
+  }
+}
+@custom-variant mobile-landscape {
+  @media (max-height: 480px) and (max-width: 960px) and (orientation: landscape) {
+    @slot;
+  }
+}
+@custom-variant md-landscape {
+  @media (max-height: 1024px) and (max-width: 1028px) and (orientation: landscape) {
+    @slot;
+  }
+}
+@custom-variant md-portrait {
+  @media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+    @slot;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +70,117 @@
   }
 }
 
-body {
+/* body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+.hero-title {
+  font-family: var(--font-jost);
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(46px, 6.5vw, 100px);
+  line-height: 1.2;
+  letter-spacing: 0%;
+  text-transform: capitalize;
+
+  @media screen and (max-width: 600px) {
+    font-size: clamp(46px, 9vw, 100px);
+  }
+}
+
+.product-category {
+  color: var(--bg-primary);
+  font-family: var(--font-jost);
+  font-size: 14px;
+  font-weight: 500;
+}
+.product-title {
+  color: var(--text-primary);
+  font-family: var(--font-jost);
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.2;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.section-title {
+  font-family: jost;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(18px, 3vw, 36px);
+  line-height: 48px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: capitalize;
+}
+
+.category-title {
+  font-family: var(--font-instrument);
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.product-name {
+  font-family: var(--font-instrument);
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(16px, 2.5vw, 24px);
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: capitalize;
+}
+
+.price {
+  font-family: var(--font-instrument);
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 2vw, 16px);
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.p-text {
+  font-family: var(--font-jost);
+  font-weight: 400;
+  font-style: Regular;
+  font-size: clamp(14px, 2vw, 16px);
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+.sm-text {
+  font-family: var(--font-jost);
+  font-weight: 400;
+  font-style: Regular;
+  font-size: clamp(12px, 1.5vw, 14px);
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+.bold-text {
+  font-family: var(--font-jost);
+  font-weight: 600;
+  font-style: Regular;
+  font-size: clamp(14px, 1.3vw, 18px);
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.link {
+  font-family: var(--font-lato);
+  font-weight: 400;
+  font-style: Regular;
+  font-size: clamp(14px, 2vw, 16px);
+  letter-spacing: 0%;
+  vertical-align: middle;
 }
