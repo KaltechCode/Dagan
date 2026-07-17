@@ -1,8 +1,7 @@
 "use client";
 
-import CartItem from "./CartItems";
-
 import { useCart } from "../../hooks/cart/useCart";
+import CartItem from "./CartItem";
 
 import EmptyCart from "./EmptyCart";
 
@@ -11,16 +10,16 @@ interface Props {
 }
 
 export default function CartList({ variant = "cart" }: Props) {
-  const { items } = useCart();
+  const { cart } = useCart();
 
-  if (!items.length) {
+  if (!cart?.items.length) {
     return <EmptyCart />;
   }
 
   return (
     <div>
-      {items.map((item) => (
-        <CartItem key={item.key} item={item} variant={variant} />
+      {cart.items?.map((item) => (
+        <CartItem key={item.key} item={item} />
       ))}
     </div>
   );
