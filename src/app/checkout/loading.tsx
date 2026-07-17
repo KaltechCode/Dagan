@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
     <div className="container py-10">
-      <CheckoutSkeleton />
+      <p>Loading</p>
     </div>
   );
 }
