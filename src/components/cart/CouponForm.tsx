@@ -13,7 +13,7 @@ interface CouponFormValues {
 export default function CouponForm() {
   const { register, handleSubmit, reset } = useForm<CouponFormValues>();
 
-  const { applyCoupon, mutating } = useCart();
+  const { applyCoupon, isApplyingCoupon } = useCart();
 
   async function onSubmit(values: CouponFormValues) {
     await applyCoupon({
@@ -27,7 +27,7 @@ export default function CouponForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="flex gap-3">
       <Input placeholder="Coupon code" {...register("code")} />
 
-      <Button type="submit" loading={mutating}>
+      <Button type="submit" loading={isApplyingCoupon}>
         Apply
       </Button>
     </form>
