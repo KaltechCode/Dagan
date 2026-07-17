@@ -28,8 +28,6 @@
 
 import ProductInfo from "@/features/product/productFeatures";
 import ProductGallery from "@/features/product/ProductGallery";
-import { getProductBySlug } from "@/libs/product/product";
-import { useGetProductBySlugQuery } from "@/redux/api/productApi";
 import { productService } from "@/services/product.services";
 
 interface Props {
@@ -41,17 +39,17 @@ interface Props {
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
 
-  const { data, isLoading, refetch } = useGetProductBySlugQuery(slug);
+  const product = await productService.getProductBySlug(slug);
 
-  console.log(data);
+  console.log("product", product);
 
-  // return (
-  //   <div className="container py-10">
-  //     <div className="grid gap-10 lg:grid-cols-2">
-  //       <ProductGallery product={product.data} />
+  return (
+    <div className="container py-10">
+      <div className="grid gap-10 lg:grid-cols-2">
+        <ProductGallery product={product} />
 
-  //       <ProductInfo product={product} />
-  //     </div>
-  //   </div>
-  // );
+        <ProductInfo product={product} />
+      </div>
+    </div>
+  );
 }

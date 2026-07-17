@@ -1,22 +1,23 @@
-"use client";
+// "use client";
 
-import MiniCart from "./MiniCart";
+// import { Drawer } from "../ui/Drawer";
+// import MiniCart from "./MiniCart";
 
-interface CartDrawerProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-}
+// interface CartDrawerProps {
+//   open: boolean;
+//   onOpenChange: (open: boolean) => void;
+// }
 
-export default function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
-  return (
-    <Drawer
-      open={open}
-      onOpenChange={onOpenChange}
-      side="right"
-      title="Shopping Cart"
-      className="w-full max-w-md"
-    >
-      <MiniCart />
-    </Drawer>
-  );
-}
+// export default function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
+//   return (
+//     <Drawer
+//       open={open}
+//       onOpenChange={onOpenChange}
+//       side="right"
+//       title="Shopping Cart"
+//       className="w-full max-w-md"
+//     >
+//       <MiniCart />
+//     </Drawer>
+//   );
+// }
