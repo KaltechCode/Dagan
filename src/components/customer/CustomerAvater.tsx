@@ -14,7 +14,7 @@ export default function CustomerAvatar({
   size = "lg",
 }: CustomerAvatarProps) {
   if (!avatar) {
-    return <avatar name={name} size={size} />;
+    return null;
   }
 
   return (

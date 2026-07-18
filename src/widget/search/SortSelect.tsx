@@ -18,5 +18,5 @@ export default function SortSelect({
   options,
   onChange,
 }: SortSelectProps) {
-  return <Select value={value} options={options} onValueChange={onChange} />;
+  return <Select value={value} options={options} />;
 }

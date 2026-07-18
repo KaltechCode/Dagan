@@ -26,14 +26,14 @@ export default function AdditionalInformationTab({ product }: Props) {
         </p>
       )}
 
-      {(product.dimensions?.length ||
+      {/* {(product.dimensions?.length ||
         product.dimensions?.width ||
         product.dimensions?.height) && (
         <p>
           <strong>Dimensions:</strong> {product.dimensions?.length} ×{" "}
           {product.dimensions?.width} × {product.dimensions?.height}
         </p>
-      )}
+      )} */}
     </div>
   );
 }

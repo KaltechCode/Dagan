@@ -1,49 +1,51 @@
-// "use client";
+"use client";
 
-// import { Card } from "@/components/ui/shared/Card";
+import { Card } from "@/components/ui/shared/Card";
 
-// import { useCart } from "../../hooks/cart/useCart";
+import { useCart } from "../../hooks/cart/useCart";
 
-// export default function CartTotals() {
-//   const { totals } = useCart();
+export default function CartTotals() {
+  const { cart } = useCart();
 
-//   if (!totals) {
-//     return null;
-//   }
+  if (!cart) {
+    return null;
+  }
 
-//   return (
-//     <Card className="space-y-4">
-//       <Row label="Subtotal" value={totals.subtotal} />
+  const totals = cart?.totals;
 
-//       <Row label="Shipping" value={totals.shipping} />
+  return (
+    <Card className="space-y-4">
+      <Row label="Subtotal" value={totals.subtotal} />
 
-//       <Row label="Discount" value={totals.discount} />
+      <Row label="Shipping" value={totals.shipping} />
 
-//       <Row label="Tax" value={totals.tax} />
+      <Row label="Discount" value={totals.discount} />
 
-//       <hr />
+      <Row label="Tax" value={totals.tax} />
 
-//       <Row label="Total" value={totals.total} bold />
-//     </Card>
-//   );
-// }
+      <hr />
 
-// function Row({
-//   label,
-//   value,
-//   bold,
-// }: {
-//   label: string;
+      <Row label="Total" value={totals.total} bold />
+    </Card>
+  );
+}
 
-//   value: string;
+function Row({
+  label,
+  value,
+  bold,
+}: {
+  label: string;
 
-//   bold?: boolean;
-// }) {
-//   return (
-//     <div className="flex justify-between">
-//       <span className={bold ? "font-semibold" : ""}>{label}</span>
+  value: number;
 
-//       <span className={bold ? "font-semibold" : ""}>{value}</span>
-//     </div>
-//   );
-// }
+  bold?: boolean;
+}) {
+  return (
+    <div className="flex justify-between">
+      <span className={bold ? "font-semibold" : ""}>{label}</span>
+
+      <span className={bold ? "font-semibold" : ""}>{value}</span>
+    </div>
+  );
+}

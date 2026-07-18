@@ -36,3 +36,22 @@ export default function PlaceOrderButton({
     </button>
   );
 }
+
+interface Prop extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isLoading?: boolean;
+
+  disabled?: boolean;
+}
+
+export function PlaceOrderBtnForm({
+  isLoading,
+  disabled,
+  children = "Place Order",
+  ...props
+}: Prop) {
+  return (
+    <button {...props} type="submit" disabled={disabled || isLoading}>
+      {isLoading ? "Placing Order..." : children}
+    </button>
+  );
+}

@@ -1,4 +1,4 @@
-import { Product } from "@/entities/product/types/product";
+import { Product } from "@/types/product";
 import { wooCommerceClient } from "./woocommerce/client";
 
 interface WooResponse<T> {

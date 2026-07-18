@@ -8,12 +8,12 @@ import Logo from "@/components/small/Logo";
 import Image from "next/image";
 import ShoppingBasket from "@/components/small/ShoppingBasket";
 import UserIcon from "@/components/small/UserIcon";
-import TopBar from "./TopBar";
+import Topbar from "@/widget/header/Topbar";
 
 export default function Header() {
   return (
     <header className="border-b border-slate-200 bg-white shadow-sm">
-      <TopBar />
+      <Topbar />
       <div className="mx-auto flex w-[90%] max-w-[1500px] flex-col gap-4 py-5 md:grid md:grid-cols-4 ">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-10  md:col-span-3">
           <Logo />

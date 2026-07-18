@@ -2,12 +2,11 @@
 
 import { formatCurrency } from "@/components/helpers/currency";
 
-// import { cn } from "@/libs/utils";
-// import { ProductPriceProps } from "./types";
-// import { getPriceRange } from "./utils";
-// import { formatPrice } from "@/libs/product/priceFormat";
+import { cn } from "@/libs/utils";
+import { getPriceRange } from "./utils";
+import { formatPrice } from "@/libs/product/priceFormat";
 
-// export default function ProductPrice({
+// export default function ProductPriceTwo({
 //   price,
 //   regularPrice,
 //   salePrice,

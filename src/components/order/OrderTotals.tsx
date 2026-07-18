@@ -2,6 +2,7 @@
 
 import { Card } from "@/components/ui/shared/Card";
 import { CartTotals } from "@/types/cart";
+import { number } from "zod";
 
 interface OrderTotalsProps {
   totals: CartTotals;
@@ -13,7 +14,7 @@ function TotalRow({
   emphasize = false,
 }: {
   label: string;
-  value: string;
+  value: number;
   emphasize?: boolean;
 }) {
   return (

@@ -36,7 +36,7 @@ export default function ProductInfo({ product }: Props) {
 
       <ProductShortDescription html={product.shortDescription} />
 
-      <ProductActions product={product} />
+      <ProductActions product={product} showQuantityControl={false} />
 
       <ProductMeta product={product} />
     </div>

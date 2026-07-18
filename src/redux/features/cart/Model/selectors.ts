@@ -1,20 +1,20 @@
-import { RootState } from "@/redux/store";
+// import { RootState } from "@/redux/store";
 
-export const selectCartItems = (state: RootState) => state.cart.items;
+// export const selectCartItems = (state: RootState) => state.cart.items;
 
-export const selectCartQuantity = (state: RootState) =>
-  state.cart.items.reduce(
-    (total, item) => total + item.quantity,
+// export const selectCartQuantity = (state: RootState) =>
+//   state.cart.items.reduce(
+//     (total, item) => total + item.quantity,
 
-    0,
-  );
+//     0,
+//   );
 
-export const selectCartSubtotal = (state: RootState) =>
-  state.cart.items.reduce(
-    (total, item) => total + item.price * item.quantity,
+// export const selectCartSubtotal = (state: RootState) =>
+//   state.cart.items.reduce(
+//     (total, item) => total + item.price * item.quantity,
 
-    0,
-  );
+//     0,
+//   );
 // export const selectCartTotalPrice = (state: RootState) =>
 //   state.cart.items.reduce(
 //     (total, item) => total + item.price * item.quantity,

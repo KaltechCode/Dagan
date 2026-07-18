@@ -31,6 +31,14 @@ export const API = {
 
   ORDERS: "/orders",
 
+  ORDER: (id: number | string) => `/orders/${id}`,
+
+  ORDER_CANCEL: (id: number | string) => `/orders/${id}/cancel`,
+
+  ORDER_PAY: (id: number | string) => `/orders/${id}/pay`,
+
+  ORDER_NOTES: (id: number | string) => `/orders/${id}/notes`,
+
   SETTINGS: "/settings",
 
   LOGOUT: "/logout",
@@ -66,12 +74,6 @@ export const API = {
   CART_SHIPPING: "/cart/shipping",
 
   CART_TOTALS: "/cart/totals",
-
-  ORDER: "/orders",
-
-  ORDER_CANCEL: "/orders",
-
-  ORDER_PAY: "/orders",
 
   CHECKOUT_PAYMENT_GATEWAYS: "/checkout/payment-gateways",
 } as const;

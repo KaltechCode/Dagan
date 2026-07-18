@@ -6,12 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Field } from "@/components/ui/shared/Fields";
 import PaymentMethods from "./PaymentMethod";
-import PlaceOrderButton from "./PlaceOrderBtn";
+import PlaceOrderButton, { PlaceOrderBtnForm } from "./PlaceOrderBtn";
 import { useCheckout } from "@/hooks/checkout/useCheckout";
 import { CheckoutSchema, checkoutSchema } from "@/schema/checkoutSchema";
 
 export default function CheckoutForm() {
-  const { placeOrder, loading } = useCheckout();
+  const { placeOrder, isPlacingOrder } = useCheckout();
 
   const {
     register,
@@ -67,7 +67,7 @@ export default function CheckoutForm() {
 
       <PaymentMethods register={register} />
 
-      <PlaceOrderButton loading={loading} />
+      <PlaceOrderBtnForm isLoading={isPlacingOrder} />
     </form>
   );
 }

@@ -1,3 +1,4 @@
+import { Brand } from "@/types/product";
 import Link from "next/link";
 
 interface Props {

@@ -14,6 +14,6 @@ export abstract class BaseService {
   }
 
   protected delete<T>(endpoint: string, params?: Record<string, unknown>) {
-    return wooCommerceClient.delete<T>(endpoint, params);
+    return wooCommerceClient.delete<T>(endpoint);
   }
 }

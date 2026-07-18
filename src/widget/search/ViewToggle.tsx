@@ -13,7 +13,7 @@ export default function ViewToggle({ view, onChange }: ViewToggleProps) {
   return (
     <div className="flex rounded-lg border">
       <Button
-        variant={view === "grid" ? "default" : "ghost"}
+        variant={view === "grid" ? "primary" : "ghost"}
         size="icon"
         onClick={() => onChange("grid")}
       >
@@ -21,7 +21,7 @@ export default function ViewToggle({ view, onChange }: ViewToggleProps) {
       </Button>
 
       <Button
-        variant={view === "list" ? "default" : "ghost"}
+        variant={view === "list" ? "primary" : "ghost"}
         size="icon"
         onClick={() => onChange("list")}
       >

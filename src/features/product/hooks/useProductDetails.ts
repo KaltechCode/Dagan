@@ -1,17 +1,17 @@
-import { useGetProductDetailsQuery } from "@/redux/api/productApi";
+// import { useGetProductDetailsQuery } from "@/redux/api/productApi";
 
-export function useProductDetails(slug: string) {
-  const query = useGetProductDetailsQuery(slug);
+// export function useProductDetails(slug: string) {
+//   const query = useGetProductDetailsQuery(slug);
 
-  return {
-    product: query.data?.data.product,
+//   return {
+//     product: query.data?.data.product,
 
-    variations: query.data?.data.variations ?? [],
+//     variations: query.data?.data.variations ?? [],
 
-    isLoading: query.isLoading,
+//     isLoading: query.isLoading,
 
-    isError: query.isError,
+//     isError: query.isError,
 
-    refetch: query.refetch,
-  };
-}
+//     refetch: query.refetch,
+//   };
+// }

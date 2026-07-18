@@ -14,10 +14,10 @@ const ref = useRef<HTMLDivElement>(null);
 
 useClickOutside(ref, () => setOpen(false), open);
 
-const filteredOptions = useMemo() => {
-  if (!search) return options;
+// const filteredOptions = useMemo() => {
+//   if (!search) return options;
 
-  return options.filter((option) =>
-    option.label.toLowerCase().includes(search.toLowerCase()),
-  );
-}, [options, search]);
+//   return options.filter((option) =>
+//     option.label.toLowerCase().includes(search.toLowerCase()),
+//   );
+// }, [options, search]);

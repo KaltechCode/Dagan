@@ -1,4 +1,4 @@
-import { ProductVariation } from "@/entities/product/types/variation";
+import { ProductVariation } from "@/types/product";
 import { BaseService } from "./base.services";
 
 class VariationService extends BaseService {

@@ -13,9 +13,7 @@ export function useRecentlyViewed(currentProductId?: number) {
 
   const ids = getRecentlyViewed();
 
-  const query = useGetProductsQuery({
-    include: ids,
-  });
+  const query = useGetProductsQuery();
 
   return {
     products: query.data?.items ?? [],

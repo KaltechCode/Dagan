@@ -14,7 +14,7 @@ interface ProductListCardProps {
 }
 
 export default function ProductListCard({ product }: ProductListCardProps) {
-  const { addToCart, addingToCart } = useProduct({
+  const { addToCart, addingToCart, loading } = useProduct({
     slug: product.slug,
   });
   return (
@@ -56,9 +56,10 @@ export default function ProductListCard({ product }: ProductListCardProps) {
             regularPrice={product.regularPrice}
             onSale={true}
             price={product.price}
+            salePrice={product.salePrice}
           />
 
-          <AddToCartButton loading={addingToCart} onClick={addToCart} />
+          <AddToCartButton productId={product.id} onClick={addToCart} />
         </div>
       </div>
     </div>

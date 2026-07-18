@@ -1,21 +1,16 @@
 "use client";
 
-import { useGetProductsQuery } from "@/redux/api/productApi";
+import { useGetRelatedProductsQuery } from "@/redux/api/productApi";
 
 export function useRelatedProducts(
   categoryIds: number[],
   currentProductId: number,
+  slug: string,
 ) {
-  const query = useGetProductsQuery({
-    category: categoryIds,
-
-    exclude: [currentProductId],
-
-    perPage: 8,
-  });
+  const query = useGetRelatedProductsQuery(slug);
 
   return {
-    products: query.data?.items ?? [],
+    products: query.data ?? [],
 
     loading: query.isLoading,
     refetch: query.refetch,

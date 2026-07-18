@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/shared/Button";
 import { useCheckoutContext } from "@/hooks/checkout/useCheckoutContext";
 
 export default function PlaceOrderButton() {
-  const { submitting } = useCheckoutContext();
+  // const { submitting } = useCheckoutContext();
 
   const { formState } = useFormContext();
 
   return (
     <Button
       type="submit"
-      loading={submitting}
+      loading={false}
       fullWidth
       disabled={!formState.isValid}
     >

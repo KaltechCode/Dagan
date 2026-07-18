@@ -35,7 +35,7 @@ function ProductVerticalCard({ item }: { item: Product }) {
         />
 
         <div className="absolute top-3 left-3">
-          <ProductBadge label="Sale" />
+          <ProductBadge onSale={item.onSale} />
         </div>
         <div className="absolute w-full bottom-0 right-0 group-hover:hidden bg-black">
           <Marquee speed={50} pauseOnHover={true} gradient={false}>

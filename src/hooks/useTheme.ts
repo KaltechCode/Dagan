@@ -1,7 +1,7 @@
-const {
-  theme,
+// const {
+//   theme,
 
-  toggle,
+//   toggle,
 
-  setTheme,
-} = useTheme();
+//   setTheme,
+// } = useTheme();

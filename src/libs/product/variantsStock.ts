@@ -1,4 +1,4 @@
-import { ProductVariation } from "../types/variation";
+import { ProductVariation } from "@/types/product";
 
 export function getVariantStock(variant?: ProductVariation) {
   if (!variant) {

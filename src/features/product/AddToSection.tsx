@@ -10,17 +10,23 @@ interface Props {
 }
 
 export default function AddToCartSection({ product }: Props) {
-  const { quantity, setQuantity, selectedVariation, addingToCart, addToCart } =
-    useProduct({
-      slug: product.slug,
-    });
+  const {
+    quantity,
+    setQuantity,
+    selectedVariation,
+    addingToCart,
+    addToCart,
+    loading,
+  } = useProduct({
+    slug: product.slug,
+  });
 
   return (
     <div className="space-y-6">
       <QuantitySelector value={quantity} onChange={setQuantity} />
 
       <AddToCartButton
-        loading={addingToCart}
+        productId={product.id}
         disabled={product.type === "variable" && !selectedVariation}
         onClick={addToCart}
       />

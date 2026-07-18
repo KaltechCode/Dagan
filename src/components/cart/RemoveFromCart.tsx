@@ -3,7 +3,7 @@
 import { Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/shared/Button";
-import { useCart } from "../../features/product/hooks/useCart";
+import { useCart } from "@/hooks/cart/useCart";
 
 interface Props {
   productId: number;
@@ -18,11 +18,7 @@ export default function RemoveFromCartButton({
   const { remove } = useCart();
 
   return (
-    <Button
-      variant="ghost"
-      size="md"
-      onClick={() => remove(productId, variationId)}
-    >
+    <Button variant="ghost" size="md" onClick={() => remove(String(productId))}>
       <Trash2 size={18} />
     </Button>
   );

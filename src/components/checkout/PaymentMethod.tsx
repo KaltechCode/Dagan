@@ -1,9 +1,9 @@
 "use client";
 
-import { useGetPaymentGatewaysQuery } from "@/redux/api/checkoutApi";
+import { useGetPaymentMethodsQuery } from "@/redux/api/checkoutApi";
 
 export default function PaymentMethods({ register }: any) {
-  const { data = [], isLoading } = useGetPaymentGatewaysQuery();
+  const { data = [], isLoading } = useGetPaymentMethodsQuery();
 
   if (isLoading) {
     return <p>Loading payment methods...</p>;

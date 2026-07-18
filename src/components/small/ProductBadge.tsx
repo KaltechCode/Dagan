@@ -2,7 +2,7 @@
 
 import { cn } from "@/libs/utils";
 import { Badge } from "../ui/shared/Badge";
-import { ProductBadgeProps } from "@/entities/product/types/productBadge";
+import { ProductBadgeProps } from "@/types/product";
 
 export default function ProductBadge({
   featured,

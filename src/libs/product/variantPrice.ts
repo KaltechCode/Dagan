@@ -1,5 +1,4 @@
-import { Product } from "../types/product";
-import { ProductVariation } from "../types/variation";
+import { Product, ProductVariation } from "@/types/product";
 
 export function getVariantPrice(product: Product, variant?: ProductVariation) {
   if (!variant) {

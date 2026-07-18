@@ -14,6 +14,7 @@ export default function RelatedProducts({ product }: Props) {
   const { products } = useRelatedProducts(
     product.categories.map((category) => category.id),
     product.id,
+    product.slug,
   );
 
   if (!products.length) {
