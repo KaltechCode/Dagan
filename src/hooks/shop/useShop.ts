@@ -17,10 +17,6 @@ export function useShop() {
 
   const products = useGetProductsQuery(query);
 
-  console.log("Query:", query);
-
-  console.log(products);
-
   function update(
     values: Record<string, string | number | boolean | undefined>,
   ) {

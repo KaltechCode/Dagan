@@ -11,7 +11,7 @@ export default function Section({ children, className = "" }: SectionProps) {
     <section
       className={`py-24 md:py-28 lg-py-32 2xl:py-36 ${className} bg-white`}
     >
-      <div className="w-[90%] xl:w-[80%] mx-auto">{children}</div>
+      <div className="w-[95%] xl:w-[90%] mx-auto">{children}</div>
     </section>
   );
 }

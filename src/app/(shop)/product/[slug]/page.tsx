@@ -41,8 +41,6 @@ export default async function ProductPage({ params }: Props) {
 
   const product = await productService.getProductBySlug(slug);
 
-  console.log("product", product);
-
   return (
     <div className="container py-10">
       <div className="grid gap-10 lg:grid-cols-2">

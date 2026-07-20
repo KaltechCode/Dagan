@@ -20,7 +20,7 @@ export default function ShopPage() {
   const { products, pagination, query, loading, update, clearFilters } =
     useShop();
 
-  console.log(products);
+  console.log("query", query);
 
   const { view, setView } = useViewPreference();
 

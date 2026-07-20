@@ -8,12 +8,14 @@ interface Props {
 }
 
 export default function CategoryCarousel({ categories }: Props) {
+  const parentCategories = categories.filter((item) => item.parentId == 0);
+
   return (
     <div className="grid gap-6 grid-cols-2 xmd:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6">
-      {categories &&
-        categories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
+      {parentCategories &&
+        parentCategories.map((category) => {
+          return <CategoryCard key={category.id} category={category} />;
+        })}
     </div>
   );
 }

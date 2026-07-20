@@ -51,11 +51,11 @@ export default function SectionHeader({
         </Link>
       )}
 
-      {type == "all" && (
+      {/* {type == "all" && (
         <div className="">
           <Categorybar />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

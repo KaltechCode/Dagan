@@ -11,6 +11,11 @@ import ProductCardHorizontal from "../product/productcard/ProductCardHorizontal"
 import ThreeColumsSection from "../layout/section/ThreeColumsSection";
 import FourColumns from "../layout/section/FourColumns";
 import WhyIconsCarousel from "../layout/section/WhyIconsCarousel";
+import FourItemItem from "../Box/FourItemItem";
+import FourItemBox from "../Box/FourItemBox";
+import { useCategory } from "@/hooks/category/useCategory";
+import { useGetProductsQuery } from "@/redux/api/productApi";
+import CategoryProductSection from "../layout/section/CategoryProductsSection";
 
 interface HomePageProps {
   hero: HeroSectionData;
@@ -44,6 +49,13 @@ export default function HomePage({ hero }: HomePageProps) {
         actionHref="/shop"
         products={featuredProducts.data?.items ?? []}
         type="all"
+      />
+      <CategoryProductSection
+        title="Products By Categories"
+        subtitle="All Product Shop"
+        actionLabel="View All"
+        actionHref="/shop"
+        products={featuredProducts.data?.items ?? []}
       />
 
       <HomeFirstBanner />

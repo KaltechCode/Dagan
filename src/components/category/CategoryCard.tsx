@@ -9,7 +9,6 @@ interface CategoryCardProps {
 }
 
 export default function CategoryCard({ category }: CategoryCardProps) {
-  console.log("item", category);
   return (
     <Link
       href={`/shop?category=${category.slug}`}

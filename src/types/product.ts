@@ -51,6 +51,7 @@ export interface Category {
   slug: string;
 
   description: string;
+  parentId: number;
 
   parent: number;
 
