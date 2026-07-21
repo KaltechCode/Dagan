@@ -59,7 +59,7 @@ export default function ProductActions({
         />
       )}
 
-      {/* <div className="flex flex-col gap-4 lg:flex-row justify-between py-4 py-2 shadow-sm">
+      <div className="flex flex-col gap-4 justify-between">
         {product.variations && product.variations.length > 0 ? (
           <AddToCartButton
             productId={product.id}
@@ -76,7 +76,7 @@ export default function ProductActions({
           disabled={product.type === "variable" && !selectedVariation}
           onClick={handleBuyNow}
         />
-      </div> */}
+      </div>
     </div>
   );
 }

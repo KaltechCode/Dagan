@@ -20,22 +20,24 @@ export default function PriceRangeFilter({ min, max, onApply }: Props) {
 
   return (
     <div className="space-y-4">
-      <Input
+      <input
         type="number"
         placeholder="Min"
         value={minimum}
         onChange={(event) => setMinimum(event.target.value)}
+        className="w-full border-1 border-gray-200 h-8 px-2 text-center outline-none rounded-md focus:outline-none"
       />
 
-      <Input
+      <input
         type="number"
         placeholder="Max"
         value={maximum}
         onChange={(event) => setMaximum(event.target.value)}
+        className="w-full border-1 border-gray-200 h-8 px-2 text-center outline-none rounded-md focus:outline-none"
       />
 
-      <Button
-        fullWidth
+      <button
+        className="bg-bg-pry py-2 text-sm text-white w-full rounded-md"
         onClick={() =>
           onApply(
             minimum ? Number(minimum) : undefined,
@@ -44,7 +46,7 @@ export default function PriceRangeFilter({ min, max, onApply }: Props) {
         }
       >
         Apply
-      </Button>
+      </button>
     </div>
   );
 }

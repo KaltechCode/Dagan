@@ -15,12 +15,11 @@ export default function ProductCard({
   showRating = true,
   showBadge = false,
   showQuickView = false,
+  shop,
   className,
 }: ProductCardProps) {
   return (
-    <Card
-      className={cn("group overflow-hidden bg-white rounded-none", className)}
-    >
+    <Card className={cn("group overflow-hidden bg-white", className)}>
       <ProductCardImage product={product} priority={priority} />
 
       <ProductCardBody
@@ -28,6 +27,7 @@ export default function ProductCard({
         showBadge={showBadge}
         showRating={showRating}
         showCategory={true}
+        shop={shop}
       />
       <ProductCardActions
         product={product}

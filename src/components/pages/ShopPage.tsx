@@ -20,7 +20,7 @@ export default function ShopPage() {
   const { products, pagination, query, loading, update, clearFilters } =
     useShop();
 
-  console.log("query", query);
+  console.log("pagination", pagination?.total);
 
   const { view, setView } = useViewPreference();
 
@@ -29,11 +29,10 @@ export default function ShopPage() {
   }
 
   return (
-    <>
+    <div className="w-[95%] xl:w-[90%] mx-auto lg:py-8">
       <ListingToolbar
         search={query.search ?? ""}
-        // total={pagination?.total ?? 0}
-        total={0}
+        total={pagination?.total ?? 0}
         sort={query.orderby ?? "menu_order"}
         view={view}
         sortOptions={SORT_OPTIONS}
@@ -56,7 +55,25 @@ export default function ShopPage() {
       <ActiveFilters filters={[]} onRemove={() => {}} onClear={clearFilters} />
 
       <ShopLayout
-        sidebar={<FilterSidebar />}
+        sidebar={
+          <FilterSidebar
+            sortOptions={SORT_OPTIONS}
+            onSearch={(value) =>
+              update({
+                search: value,
+                page: 1,
+              })
+            }
+            onSort={(value) =>
+              update({
+                orderby: value,
+                page: 1,
+              })
+            }
+            search={query.search ?? ""}
+            sort={query.orderby ?? "menu_order"}
+          />
+        }
         content={
           !products.length ? (
             <EmptyProducts />
@@ -76,6 +93,6 @@ export default function ShopPage() {
       )} */}
 
       <MobileFilterDrawer open={filtersOpen} onOpenChange={setFiltersOpen} />
-    </>
+    </div>
   );
 }

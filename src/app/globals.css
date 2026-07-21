@@ -98,13 +98,13 @@ body {
 .product-category {
   color: var(--bg-primary);
   font-family: var(--font-jost);
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
 }
 .product-title {
   color: var(--text-primary);
   font-family: var(--font-jost);
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(14px, 2vw, 20px);
   line-height: 1.2;
   font-weight: 500;
   font-style: normal;

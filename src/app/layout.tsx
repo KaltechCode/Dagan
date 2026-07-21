@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jost.variable} antialiased`}>
-      <body>
+      <body className="bg-white">
         <ReduxProvider>
           <ViewportProvider>
             <AuthProvider>{children}</AuthProvider>

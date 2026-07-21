@@ -18,6 +18,7 @@ export default function BuyNowButton({ loading, disabled, onClick }: Props) {
       disabled={disabled}
       onClick={onClick}
       size="md"
+      className="px-0!"
     >
       Buy Now
     </Button>

@@ -5,12 +5,31 @@ import FilterSection from "./filterSection";
 import { useShop } from "@/hooks/shop/useShop";
 import PriceRangeFilter from "./PriceRangeFilter";
 import CheckboxFilter from "./FilterCheckbox";
+import SearchBox from "../search/SearchBox";
+import SortSelect from "../search/SortSelect";
 
-export default function FilterSidebar() {
+interface IProps {
+  onSearch(value: string): void;
+  search: string;
+  onSort(value: string): void;
+  sortOptions: {
+    label: string;
+    value: string;
+  }[];
+  sort: string;
+}
+
+export default function FilterSidebar({
+  onSearch,
+  search,
+  onSort,
+  sortOptions,
+  sort,
+}: IProps) {
   const { query, update } = useShop();
 
   return (
-    <aside className="space-y-2">
+    <aside className="space-y-2 pr-2">
       <FilterSection title="Price">
         <PriceRangeFilter
           min={query.minPrice}
@@ -25,7 +44,7 @@ export default function FilterSidebar() {
         />
       </FilterSection>
 
-      <FilterSection title="Availability">
+      <FilterSection title="Availability" classname="mt-3">
         <CheckboxFilter
           selected={[query.inStock ? "stock" : ""].filter(Boolean)}
           options={[
@@ -42,6 +61,12 @@ export default function FilterSidebar() {
           }
         />
       </FilterSection>
+
+      <div className="space-y-4 mt-3">
+        <SearchBox value={search} onSearch={onSearch} />
+
+        <SortSelect value={sort} options={sortOptions} onChange={onSort} />
+      </div>
     </aside>
   );
 }

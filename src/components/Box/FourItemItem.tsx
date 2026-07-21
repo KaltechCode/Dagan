@@ -13,17 +13,17 @@ function FourItemItem({
   slug: string;
 }) {
   return (
-    <div className="col-span-1 row-span-1 bg-white">
-      <div className="w-full">
-        <Image
-          src={item || ""}
-          alt={name}
-          height={200}
-          width={200}
-          className="aspect-square w-full"
-        />
-      </div>
+    <div className="col-span-1 row-span-1 bg-white cursor-pointer">
       <Link href={`/shop?category=${slug}`} className="cursor-pointer">
+        <div className="w-full">
+          <Image
+            src={item || ""}
+            alt={name}
+            height={200}
+            width={200}
+            className="aspect-square w-full"
+          />
+        </div>
         <h3 className="bold-text text-center mt-2 truncate py-1.5 text-text-sdy">
           {name}
         </h3>{" "}

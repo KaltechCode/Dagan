@@ -91,5 +91,9 @@ export default function ProductPrice({
     );
   }
 
-  return <span className="text-3xl font-bold">{price}</span>;
+  return (
+    <span className="text-[17px] font-semibold text-primary">
+      {formatCurrency(price)}
+    </span>
+  );
 }

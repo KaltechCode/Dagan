@@ -10,9 +10,9 @@ interface FilterButtonProps {
 
 export default function FilterButton({ onClick }: FilterButtonProps) {
   return (
-    <Button variant="outline" onClick={onClick} className="lg:hidden">
+    <button onClick={onClick} className="lg:hidden  flex gap-2 items-center">
       <SlidersHorizontal size={18} />
       Filters
-    </Button>
+    </button>
   );
 }

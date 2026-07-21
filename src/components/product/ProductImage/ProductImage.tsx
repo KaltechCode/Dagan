@@ -10,12 +10,12 @@ export default function ProductImage({
   src,
   alt,
   width = 580,
-  height = 670,
+  height = 580,
   priority = false,
   rounded = true,
   hoverSrc,
   className,
-  sizes = "(max-width:768px) 50vw, 25vw",
+  sizes = "(max-width:768px) 20vw, 15vw",
 }: ProductImageProps) {
   const [image, setImage] = useState(getImageSource(src));
 
@@ -32,13 +32,13 @@ export default function ProductImage({
       onMouseLeave={() => setHovered(false)}
     >
       <Image
-        src={hovered && hoverSrc ? hoverSrc : image}
+        src={src}
         alt={alt}
         width={width}
         height={height}
-        priority={priority}
         sizes={sizes}
-        className="h-auto w-full transition-transform duration-300 hover:scale-105"
+        priority={priority}
+        className="h-auto w-full transition-transform duration-300 hover:scale-105 aspect-square"
         onError={() => setImage("/images/product-placeholder.webp")}
       />
     </div>

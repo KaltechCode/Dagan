@@ -11,7 +11,7 @@ export default function ProductCarousel({ products }: Props) {
   return (
     <div className="grid sm:gap-5 xmd:gap-10  sm:grid-cols-2 md:grid-cols-3 md:gap-12  lg:grid-cols-4  xl:grid-cols-5">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} shop={true} />
       ))}
     </div>
   );

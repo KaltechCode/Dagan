@@ -9,6 +9,7 @@ export interface Pagination {
   perPage: number;
   totalItems: number;
   totalPages: number;
+  total: number;
   hasNext: boolean;
   hasPrevious: boolean;
 }

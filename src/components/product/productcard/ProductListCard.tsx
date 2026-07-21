@@ -18,8 +18,8 @@ export default function ProductListCard({ product }: ProductListCardProps) {
     slug: product.slug,
   });
   return (
-    <div className="flex flex-col gap-6 rounded-xl border p-5 md:flex-row">
-      <Link href={`/product/${product.slug}`} className="shrink-0">
+    <div className="flex flex-col gap-3 rounded-xl border border-gray-200 p-5 md:flex-row">
+      <Link href={`/product/${product.slug}`} className="shrink-0 ">
         <Image
           src={
             product.images ? product.images[0]?.src : "/images/placeholder.webp"
@@ -27,7 +27,7 @@ export default function ProductListCard({ product }: ProductListCardProps) {
           alt={product.images ? product.images[0].alt : product.name}
           width={220}
           height={220}
-          className="rounded-lg object-cover"
+          className="rounded-lg aspect-square w-full"
         />
       </Link>
 
@@ -46,9 +46,12 @@ export default function ProductListCard({ product }: ProductListCardProps) {
         </div>
 
         {product.shortDescription && (
-          <p className="mt-4 line-clamp-3 text-sm text-gray-600">
-            {product.shortDescription}
-          </p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: product.shortDescription,
+            }}
+            className="mt-4"
+          />
         )}
 
         <div className="mt-auto flex flex-col gap-4 pt-6 sm:flex-row sm:items-center sm:justify-between">

@@ -22,7 +22,7 @@ export default function CheckboxFilter({ options, selected, onChange }: Props) {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 mt-5">
       {options.map((option) => (
         <label key={option.value} className="flex items-center justify-between">
           <div className="flex items-center gap-2">

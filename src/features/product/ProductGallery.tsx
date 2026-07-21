@@ -13,16 +13,18 @@ export default function ProductGallery({ product }: Props) {
     product.images ? product.images[0]?.src : "",
   );
 
+  console.log("Image", image);
+
   return (
     <div>
       <ProductImage
-        src={image ?? ""}
+        src={image}
         alt={product.name}
         className="aspect-square"
         priority
       />
 
-      <div className="mt-4 flex gap-3 overflow-auto">
+      <div className="mt-4 flex gap-3">
         {product.images &&
           product.images.map((img) => (
             <button key={img.id} onClick={() => setImage(img.src)}>
@@ -31,6 +33,7 @@ export default function ProductGallery({ product }: Props) {
                 alt={img.alt}
                 width={90}
                 height={90}
+                className=""
               />
             </button>
           ))}

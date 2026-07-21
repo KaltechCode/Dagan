@@ -52,18 +52,26 @@ interface ProductRatingProps {
   rating: number;
 
   reviews: number;
+
+  shop?: boolean;
 }
 
-export default function ProductRating({ rating, reviews }: ProductRatingProps) {
+export default function ProductRating({
+  rating,
+  reviews,
+  shop,
+}: ProductRatingProps) {
   return (
-    <div className="flex items-center gap-3 mt-3">
+    <div
+      className={`flex items-center gap-3 mt-3 ${shop && "flex-col gap-3 items-start"}`}
+    >
       <div className="flex">
         {Array.from({
           length: 5,
         }).map((_, index) => (
           <Star
             key={index}
-            size={18}
+            size={14}
             className={
               index < Math.round(rating)
                 ? "fill-yellow-400 text-yellow-400"

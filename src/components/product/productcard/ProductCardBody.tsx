@@ -17,6 +17,8 @@ interface Props {
   showRating: boolean;
 
   showCategory: boolean;
+
+  shop?: boolean;
 }
 
 export default function ProductCardBody({
@@ -24,6 +26,7 @@ export default function ProductCardBody({
   showBadge,
   showRating,
   showCategory,
+  shop,
 }: Props) {
   return (
     <div className="bg-white space-y-3 py-4">
@@ -46,6 +49,7 @@ export default function ProductCardBody({
         <ProductRating
           rating={Number(product.averageRating)}
           reviews={product.ratingCount}
+          shop={shop}
         />
       )}
 

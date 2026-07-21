@@ -11,22 +11,14 @@ interface ViewToggleProps {
 
 export default function ViewToggle({ view, onChange }: ViewToggleProps) {
   return (
-    <div className="flex rounded-lg border">
-      <Button
-        variant={view === "grid" ? "primary" : "ghost"}
-        size="icon"
-        onClick={() => onChange("grid")}
-      >
-        <Grid2X2 size={18} />
-      </Button>
+    <div className="flex">
+      <button onClick={() => onChange("grid")} className="py-1 px-4">
+        <Grid2X2 size={24} color="#014b30" />
+      </button>
 
-      <Button
-        variant={view === "list" ? "primary" : "ghost"}
-        size="icon"
-        onClick={() => onChange("list")}
-      >
-        <List size={18} />
-      </Button>
+      <button onClick={() => onChange("list")}>
+        <List size={24} color="#014b30" />
+      </button>
     </div>
   );
 }

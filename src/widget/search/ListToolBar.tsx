@@ -37,17 +37,17 @@ export default function ListingToolbar({
   onOpenFilters,
 }: ListingToolbarProps) {
   return (
-    <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-      <ProductsCount total={total} />
+    <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between w-[95%] xl:w-[90%] mx-auto">
+      <div className="flex flex-wrap items-center gap-3 justify-between w-full">
+        {/* <SearchBox value={search} onSearch={onSearch} />
 
-      <div className="flex flex-wrap items-center gap-3">
-        <SearchBox value={search} onSearch={onSearch} />
+        <SortSelect value={sort} options={sortOptions} onChange={onSort} /> */}
 
-        <SortSelect value={sort} options={sortOptions} onChange={onSort} />
+        <ProductsCount total={total} />
 
         <ViewToggle view={view} onChange={onView} />
 
-        <FilterButton onClick={onOpenFilters} />
+        {/* <FilterButton onClick={onOpenFilters} /> */}
       </div>
     </div>
   );

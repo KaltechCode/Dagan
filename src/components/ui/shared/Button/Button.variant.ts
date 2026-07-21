@@ -44,7 +44,7 @@ export const buttonVariants = cva(
 
         lg: "h-11 px-6",
 
-        xl: "h-12 px-8 text-lg",
+        xl: "py-4 px-8 text-lg w-max",
         icon: "h-12 w-12 rounded-full flex justify-center items-center",
       },
 

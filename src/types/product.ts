@@ -100,6 +100,7 @@ export interface ProductCardProps {
   showQuickView?: boolean;
 
   className?: string;
+  shop?: boolean;
 }
 
 export type SelectedOptions = Record<string, string>;

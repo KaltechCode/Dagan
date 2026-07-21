@@ -108,7 +108,7 @@ export default function AddToCartButton({
       type={props.type ?? "button"}
       disabled={disabled || isAdding}
       onClick={handleAddToCart}
-      className="bg-bg-pry text-white px-2 py-3 rounded-sm cursor-pointer"
+      className="bg-bg-pry text-white text-center px-6 py-3 rounded-sm cursor-pointer"
     >
       {isAdding ? "Adding..." : children}
     </button>

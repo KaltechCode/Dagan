@@ -42,7 +42,11 @@ export default function CategoriesSection({
           loop
           speed={7000}
           allowTouchMove={true}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true,
+          }}
           breakpoints={{
             0: {
               slidesPerView: 2,
