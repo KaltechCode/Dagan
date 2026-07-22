@@ -26,8 +26,8 @@ export default function ProductGallery({ product }: Props) {
 
       <div className="mt-4 flex xmd:flex-col gap-3 xmd:col-span-1 row-span-1 xmd:grid lg:grid grid-cols-2 lg:col-span-1 lg:order-1">
         {product.images &&
-          product.images.map((img) => (
-            <button key={img.id} onClick={() => setImage(img.src)}>
+          product.images.map((img, key) => (
+            <button key={key} onClick={() => setImage(img.src)}>
               <ProductImage
                 src={img.src}
                 alt={img.alt}

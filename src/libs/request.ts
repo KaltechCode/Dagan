@@ -49,6 +49,10 @@ export async function request<T>(
   endpoint: string,
   options?: RequestOptions,
 ): Promise<T> {
+  const url = buildUrl(endpoint, options?.params);
+
+  console.log("Fetching:", url);
+
   const response = await fetch(buildUrl(endpoint, options?.params), {
     method,
     credentials: "include",
