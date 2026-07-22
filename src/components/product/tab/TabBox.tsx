@@ -1,5 +1,3 @@
-import DOMPurify from "isomorphic-dompurify";
-
 interface DescriptionTabProps {
   html: string;
   title?: string;
@@ -12,7 +10,7 @@ function TabsBox({ html, title }: DescriptionTabProps) {
       <div
         className="prose max-w-none"
         dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(html),
+          __html: html,
         }}
       />
     </div>
