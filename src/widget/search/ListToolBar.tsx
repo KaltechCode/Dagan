@@ -47,7 +47,7 @@ export default function ListingToolbar({
 
         <ViewToggle view={view} onChange={onView} />
 
-        {/* <FilterButton onClick={onOpenFilters} /> */}
+        <FilterButton onClick={onOpenFilters} />
       </div>
     </div>
   );

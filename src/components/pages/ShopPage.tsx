@@ -12,14 +12,13 @@ import EmptyProducts from "../product/EmptyProduct";
 import ProductList from "../product/productGrid/ProductList";
 import ProductGrid from "../product/productGrid/ProductGrid";
 import { SORT_OPTIONS } from "@/constants/order";
+import MobileFilterDrawer from "@/widget/header/MobileFilterDrawer";
 
 export default function ShopPage() {
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const { products, pagination, query, loading, update, clearFilters } =
     useShop();
-
-  console.log("pagination", pagination?.total);
 
   const { view, setView } = useViewPreference();
 
@@ -90,8 +89,8 @@ export default function ShopPage() {
           onPageChange={(page) => update({ page })}
         />
       )} */}
-      {/* 
-      <MobileFilterDrawer open={filtersOpen} onOpenChange={setFiltersOpen} /> */}
+
+      <MobileFilterDrawer open={filtersOpen} onOpenChange={setFiltersOpen} />
     </div>
   );
 }

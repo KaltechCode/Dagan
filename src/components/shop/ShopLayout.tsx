@@ -8,9 +8,9 @@ interface ShopLayoutProps {
 export default function ShopLayout({ sidebar, content }: ShopLayoutProps) {
   return (
     <div className="grid gap-3 grid-cols-7 lg:grid-cols-12 lg:gap-10">
-      <aside className="col-span-2 lg:col-span-2">{sidebar}</aside>
+      <aside className="hidden lg:block lg:col-span-2">{sidebar}</aside>
 
-      <main className="col-span-5 lg:col-span-10">{content}</main>
+      <main className="col-span-7 lg:col-span-10">{content}</main>
     </div>
   );
 }
