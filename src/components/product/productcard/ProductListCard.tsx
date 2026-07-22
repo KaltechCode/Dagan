@@ -54,7 +54,7 @@ export default function ProductListCard({ product }: ProductListCardProps) {
           />
         )}
 
-        <div className="mt-auto flex flex-col gap-4 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-auto flex flex-col gap-4 pt-6 lg:flex-row sm:items-center sm:justify-between">
           <ProductPrice
             regularPrice={product.regularPrice}
             onSale={true}

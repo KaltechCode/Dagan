@@ -9,10 +9,13 @@ import type { Collection, ProductQuery } from "../types";
 export const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query<Collection<Product>, ProductQuery | void>({
-      query: (query) => ({
-        url: API.PRODUCTS,
-        params: query ?? {},
-      }),
+      query: (query) => {
+        console.log("RTK Query:", query);
+        return {
+          url: API.PRODUCTS,
+          params: query ?? {},
+        };
+      },
 
       providesTags: (result) =>
         result

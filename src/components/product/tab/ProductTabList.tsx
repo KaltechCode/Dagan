@@ -24,27 +24,38 @@ export default function ProductTabList({
       </ProductTab>
 
       <ProductTab
-        id="specifications"
-        active={activeTab === "specifications"}
+        id="features"
+        active={activeTab === "features"}
         onClick={onChange}
       >
-        Specifications
+        Features
       </ProductTab>
 
       <ProductTab
-        id="additional-information"
-        active={activeTab === "additional-information"}
+        id="perfect_for"
+        active={activeTab === "perfect_for"}
         onClick={onChange}
       >
-        Additional Information
+        Perfect For
       </ProductTab>
 
       <ProductTab
-        id="shipping"
-        active={activeTab === "shipping"}
+        id="styling_suggestions"
+        active={activeTab === "styling_suggestions"}
         onClick={onChange}
       >
-        Shipping & Returns
+        Style
+      </ProductTab>
+
+      <ProductTab
+        id="care_instructions"
+        active={activeTab === "care_instructions"}
+        onClick={onChange}
+      >
+        Care
+      </ProductTab>
+      <ProductTab id="fit" active={activeTab === "fit"} onClick={onChange}>
+        Fit
       </ProductTab>
     </div>
   );

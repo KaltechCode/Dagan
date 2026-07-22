@@ -1,8 +1,8 @@
 "use client";
 
-import ProductInfo from "@/features/product/productFeatures";
 import ProductGallery from "@/features/product/ProductGallery";
 import { useGetProductBySlugQuery } from "@/redux/api/productApi";
+import ProductInfo from "../ProductInfo";
 
 interface Props {
   slug: string;

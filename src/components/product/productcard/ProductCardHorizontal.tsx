@@ -5,6 +5,7 @@ import ProductCardActions from "./ProductCardActions";
 import { ProductCardProps } from "@/types/product";
 import { cn } from "@/libs/utils";
 import HorizontalCardBody from "./HorizontalCardBody";
+import ProductActions from "./ProductAction";
 
 function ProductCardHorizontal({
   product,
@@ -18,7 +19,7 @@ function ProductCardHorizontal({
   return (
     <Card
       className={cn(
-        "group overflow-hidden bg-white grid gap-5 grid-rows-1 grid-cols-3 p-3 py-4 rounded-[10px] border border-gray-200",
+        "group overflow-hidden bg-white grid gap-5 grid-rows-1 grid-cols-3 p-3 py-4 items-center rounded-[10px] border border-gray-200",
         className,
       )}
     >
@@ -33,10 +34,10 @@ function ProductCardHorizontal({
           showRating={showRating}
           showCategory={true}
         />
-        <ProductCardActions
+        <ProductActions
           product={product}
-          showWishlist={showWishlist}
-          // showQuickView={showQuickView}
+          showQuantityControl={false}
+          classname="flex-row! col-span-4 mt-3 justify-start gap-5"
         />
       </div>
     </Card>

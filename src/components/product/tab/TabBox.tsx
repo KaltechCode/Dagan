@@ -1,16 +1,14 @@
 import DOMPurify from "isomorphic-dompurify";
 
-interface ProductShortDescriptionProps {
+interface DescriptionTabProps {
   html: string;
+  title?: string;
 }
 
-export default function ProductShortDescription({
-  html,
-}: ProductShortDescriptionProps) {
+function TabsBox({ html, title }: DescriptionTabProps) {
   return (
-    <div>
-      <h3 className="small-title mb-3">Short Description</h3>
-
+    <div className="">
+      <h3 className="small-title mb-2">{title}</h3>
       <div
         className="prose max-w-none"
         dangerouslySetInnerHTML={{
@@ -20,3 +18,5 @@ export default function ProductShortDescription({
     </div>
   );
 }
+
+export default TabsBox;

@@ -12,11 +12,13 @@ import BuyNowButton from "@/components/small/BuyNowBtn";
 interface ProductActionsProps {
   product: Product;
   showQuantityControl: boolean;
+  classname?: string;
 }
 
 export default function ProductActions({
   product,
   showQuantityControl,
+  classname,
 }: ProductActionsProps) {
   const router = useRouter();
 
@@ -43,7 +45,7 @@ export default function ProductActions({
   }
 
   return (
-    <div className="space-y-6">
+    <div className={`space-y-6 w-full col-span-4`}>
       {product.type === "variable" && (
         <VariationSelector
           attributes={product.attributes}
@@ -59,7 +61,7 @@ export default function ProductActions({
         />
       )}
 
-      <div className="flex flex-col gap-4 justify-between">
+      <div className={`flex flex-col gap-4 justify-between ${classname}`}>
         {product.variations && product.variations.length > 0 ? (
           <AddToCartButton
             productId={product.id}

@@ -10,7 +10,7 @@ interface FilterButtonProps {
 
 export default function FilterButton({ onClick }: FilterButtonProps) {
   return (
-    <button onClick={onClick} className="lg:hidden  flex gap-2 items-center">
+    <button onClick={onClick} className="md:hidden  flex gap-2 items-center">
       <SlidersHorizontal size={18} />
       Filters
     </button>

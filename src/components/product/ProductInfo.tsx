@@ -38,7 +38,7 @@ export default function ProductInfo({ product }: Props) {
 
       <ProductActions product={product} showQuantityControl={false} />
 
-      <ProductMeta product={product} />
+      {/* <ProductMeta product={product} /> */}
     </div>
   );
 }

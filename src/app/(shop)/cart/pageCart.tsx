@@ -15,7 +15,7 @@ export default function CartPage() {
 
   if (!cart || cart.items.length === 0) {
     return (
-      <div className="container py-20 text-center bg-white w-full h-screen">
+      <div className=" py-20 text-center bg-white h-screen w-[95%] xl:w-[90%] mx-auto">
         <h2 className="text-2xl font-semibold">Your cart is empty</h2>
 
         <p className="mt-3 text-gray-500">Add products to begin shopping.</p>
@@ -31,7 +31,7 @@ export default function CartPage() {
   }
 
   return (
-    <section className="container py-10 bg-white">
+    <section className="w-[95%] xl:w-[90%] mx-auto py-10 bg-white">
       <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
         <div className="space-y-5">
           {cart?.items?.map((item) => (
@@ -58,7 +58,7 @@ export default function CartPage() {
 
           <Link
             href="/checkout"
-            className="mt-6 block rounded bg-black px-6 py-4 text-center text-white"
+            className="mt-6 block rounded bg-bg-pry px-6 py-4 text-center text-white"
           >
             Proceed to Checkout
           </Link>

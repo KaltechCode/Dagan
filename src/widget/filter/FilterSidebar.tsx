@@ -1,35 +1,41 @@
 "use client";
 
 import FilterSection from "./filterSection";
-
-import { useShop } from "@/hooks/shop/useShop";
 import PriceRangeFilter from "./PriceRangeFilter";
 import CheckboxFilter from "./FilterCheckbox";
+
 import SearchBox from "../search/SearchBox";
 import SortSelect from "../search/SortSelect";
 
-interface IProps {
-  onSearch(value: string): void;
-  search: string;
-  onSort(value: string): void;
-  sortOptions: {
-    label: string;
-    value: string;
-  }[];
-  sort: string;
-}
+import { SORT_OPTIONS } from "@/constants/order";
+import { useShop } from "@/hooks/shop/useShop";
 
-export default function FilterSidebar({
-  onSearch,
-  search,
-  onSort,
-  sortOptions,
-  sort,
-}: IProps) {
+export default function FilterSidebar() {
   const { query, update } = useShop();
 
   return (
-    <aside className="space-y-2 pr-2">
+    <aside className="space-y-4 pr-2">
+      <SearchBox
+        value={query.search ?? ""}
+        onSearch={(value) =>
+          update({
+            search: value,
+            page: 1,
+          })
+        }
+      />
+
+      <SortSelect
+        value={query.orderby ?? "menu_order"}
+        options={SORT_OPTIONS}
+        onChange={(value) =>
+          update({
+            orderby: value,
+            page: 1,
+          })
+        }
+      />
+
       <FilterSection title="Price">
         <PriceRangeFilter
           min={query.minPrice}
@@ -44,9 +50,9 @@ export default function FilterSidebar({
         />
       </FilterSection>
 
-      <FilterSection title="Availability" classname="mt-3">
+      <FilterSection title="Availability">
         <CheckboxFilter
-          selected={[query.inStock ? "stock" : ""].filter(Boolean)}
+          selected={query.inStock ? ["stock"] : []}
           options={[
             {
               label: "In Stock",
@@ -61,12 +67,6 @@ export default function FilterSidebar({
           }
         />
       </FilterSection>
-
-      <div className="space-y-4 mt-3">
-        <SearchBox value={search} onSearch={onSearch} />
-
-        <SortSelect value={sort} options={sortOptions} onChange={onSort} />
-      </div>
     </aside>
   );
 }

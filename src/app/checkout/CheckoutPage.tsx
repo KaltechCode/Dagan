@@ -68,7 +68,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <section className="container py-10 bg-white">
+    <section className="w-[95%] xl:w-[90%] mx-auto py-10 bg-white">
       <div className="grid gap-10 lg:grid-cols-[1fr_420px]">
         <div className="space-y-8">
           <AddressForm
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
           <OrderSummary cart={cart} editable />
 
           <PlaceOrderButton
-            className="w-full rounded bg-black py-4 text-white"
+            className="w-full rounded bg-bg-pry py-4 text-white"
             isLoading={isPlacingOrder}
             onPlaceOrder={handlePlaceOrder}
           />

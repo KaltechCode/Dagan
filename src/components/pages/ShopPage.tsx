@@ -51,32 +51,13 @@ export default function ShopPage() {
       />
 
       <ActiveFilters filters={[]} onRemove={() => {}} onClear={clearFilters} />
-
       <ShopLayout
-        sidebar={
-          <FilterSidebar
-            sortOptions={SORT_OPTIONS}
-            onSearch={(value) =>
-              update({
-                search: value,
-                page: 1,
-              })
-            }
-            onSort={(value) =>
-              update({
-                orderby: value,
-                page: 1,
-              })
-            }
-            search={query.search ?? ""}
-            sort={query.orderby ?? "menu_order"}
-          />
-        }
+        sidebar={<FilterSidebar />}
         content={
           !products.length ? (
             <EmptyProducts />
           ) : view === "grid" ? (
-            <ProductGrid products={products} loading={false} />
+            <ProductGrid products={products} loading={loading} />
           ) : (
             <ProductList products={products} />
           )

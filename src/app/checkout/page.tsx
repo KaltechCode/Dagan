@@ -1,7 +1,9 @@
 // import CheckoutForm from "@/components/form/CheckoutForm";
 // import CheckoutProvider from "@/providers/CheckoutProvider";
 
+import Header from "@/widget/header/Header";
 import CheckoutPage from "./CheckoutPage";
+import Footer from "@/components/layout/footer/Footer";
 
 // export const metadata = {
 //   title: "Checkout",
@@ -20,5 +22,11 @@ import CheckoutPage from "./CheckoutPage";
 // }
 
 export default function Page() {
-  return <CheckoutPage />;
+  return (
+    <div className="w-full bg-white">
+      <Header />
+      <CheckoutPage />
+      <Footer />
+    </div>
+  );
 }

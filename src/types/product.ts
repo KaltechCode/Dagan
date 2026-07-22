@@ -207,6 +207,16 @@ export interface Product {
   weight?: number | undefined;
 
   brand?: Brand;
+
+  details: {
+    care_instructions?: string;
+    features?: string;
+    fit?: string;
+    material?: string;
+    package_includes?: string;
+    perfect_for?: string;
+    styling_suggestions?: string;
+  };
 }
 
 export interface CurrentProduct {

@@ -15,23 +15,7 @@ export default function MobileFilterDrawer({ open, onOpenChange }: Props) {
     useShop();
   return (
     <Drawer open={open} onOpenChange={onOpenChange} title="Filters">
-      <FilterSidebar
-        sortOptions={SORT_OPTIONS}
-        onSearch={(value) =>
-          update({
-            search: value,
-            page: 1,
-          })
-        }
-        onSort={(value) =>
-          update({
-            orderby: value,
-            page: 1,
-          })
-        }
-        search={query.search ?? ""}
-        sort={query.orderby ?? "menu_order"}
-      />
+      <FilterSidebar />
     </Drawer>
   );
 }

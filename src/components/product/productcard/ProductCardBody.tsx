@@ -39,7 +39,9 @@ export default function ProductCardBody({
         />
       )}
 
-      {showCategory && <ProductSubCategory category="Baby Food" />}
+      {showCategory && (
+        <ProductSubCategory category={product.categories[0].name} />
+      )}
 
       <Link href={`/product/${product.slug}`}>
         <ProductTitleTwo>{product.name}</ProductTitleTwo>

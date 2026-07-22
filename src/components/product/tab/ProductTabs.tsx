@@ -1,40 +1,84 @@
 "use client";
-
-import { Product } from "@/types/product";
-import DescriptionTab from "./DescriptionTab";
-import ProductTabList from "./ProductTabList";
-import ProductTabPanel from "./ProductTabPanel";
-import { useProductTabs } from "@/hooks/product/useProductTab";
-import SpecificationsTab from "./SpecificationTab";
-import AdditionalInformationTab from "./AdditionalInfomation";
-import ShippingReturnsTab from "./ShippingReturnTabs";
-
 interface ProductTabsProps {
   product: Product;
 }
+
+import { Product } from "@/types/product";
+import AdditionalInformationTab from "./AdditionalInfomation";
+import DescriptionTab from "./DescriptionTab";
+import ProductTabList from "./ProductTabList";
+import ProductTabPanel from "./ProductTabPanel";
+import ShippingReturnsTab from "./ShippingReturnTabs";
+import SpecificationsTab from "./SpecificationTab";
+import WhyTab from "./TabBox";
+import { useProductTabs } from "@/hooks/product/useProductTab";
+import ProductAccordion from "./ProducAccordion";
+import TabsBox from "./TabBox";
 
 export default function ProductTabs({ product }: ProductTabsProps) {
   const { activeTab, setActiveTab } = useProductTabs();
 
   return (
-    <section className="mt-16">
-      <ProductTabList activeTab={activeTab} onChange={setActiveTab} />
+    <section className="md:col-span-2">
+      {/* Mobile & Tablet */}
+      <div className="md:hidden">
+        <ProductAccordion product={product} />
+      </div>
 
-      <ProductTabPanel active={activeTab === "description"}>
-        <DescriptionTab html={product.description} />
-      </ProductTabPanel>
+      {/* Desktop */}
+      <div className="hidden md:block">
+        <ProductTabList activeTab={activeTab} onChange={setActiveTab} />
 
-      <ProductTabPanel active={activeTab === "specifications"}>
-        <SpecificationsTab attributes={product.attributes} />
-      </ProductTabPanel>
+        <ProductTabPanel active={activeTab === "description"}>
+          <DescriptionTab html={product.description} />
+        </ProductTabPanel>
 
-      <ProductTabPanel active={activeTab === "additional-information"}>
-        <AdditionalInformationTab product={product} />
-      </ProductTabPanel>
+        {product.details?.features && (
+          <ProductTabPanel active={activeTab === "features"}>
+            <TabsBox html={product.details.features} title="Features" />
+          </ProductTabPanel>
+        )}
 
-      <ProductTabPanel active={activeTab === "shipping"}>
-        <ShippingReturnsTab />
-      </ProductTabPanel>
+        {product.details?.perfect_for && (
+          <ProductTabPanel active={activeTab === "perfect_for"}>
+            <TabsBox html={product.details.perfect_for} title="Perfect For" />
+          </ProductTabPanel>
+        )}
+        {product.details?.styling_suggestions && (
+          <ProductTabPanel active={activeTab === "perfect_for"}>
+            <TabsBox
+              html={product.details.styling_suggestions}
+              title="Styling Suggestions"
+            />
+          </ProductTabPanel>
+        )}
+        {product.details?.care_instructions && (
+          <ProductTabPanel active={activeTab === "care_instructions"}>
+            <TabsBox
+              html={product.details.care_instructions}
+              title="Care Instruction"
+            />
+          </ProductTabPanel>
+        )}
+        {product.details?.fit && (
+          <ProductTabPanel active={activeTab === "fit"}>
+            <TabsBox html={product.details.fit} title="FIt" />
+          </ProductTabPanel>
+        )}
+
+        <ProductTabPanel active={activeTab === "shipping"}>
+          <ShippingReturnsTab />
+        </ProductTabPanel>
+
+        {product.details?.styling_suggestions && (
+          <ProductTabPanel active={activeTab === "styling_suggestions"}>
+            <TabsBox
+              html={product.details.styling_suggestions}
+              title="Styling Suggestion"
+            />
+          </ProductTabPanel>
+        )}
+      </div>
     </section>
   );
 }

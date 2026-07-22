@@ -38,7 +38,7 @@ export default function ProductImage({
         height={height}
         sizes={sizes}
         priority={priority}
-        className="h-auto w-full transition-transform duration-300 hover:scale-105 aspect-square"
+        className="w-full transition-transform duration-300 hover:scale-105 aspect-square"
         onError={() => setImage("/images/product-placeholder.webp")}
       />
     </div>

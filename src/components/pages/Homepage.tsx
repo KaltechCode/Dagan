@@ -50,13 +50,13 @@ export default function HomePage({ hero }: HomePageProps) {
         products={featuredProducts.data?.items ?? []}
         type="all"
       />
-      <CategoryProductSection
+      {/* <CategoryProductSection
         title="Products By Categories"
         subtitle="All Product Shop"
         actionLabel="View All"
         actionHref="/shop"
         products={featuredProducts.data?.items ?? []}
-      />
+      /> */}
 
       <HomeFirstBanner />
 
