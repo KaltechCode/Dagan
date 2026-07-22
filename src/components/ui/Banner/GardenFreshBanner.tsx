@@ -5,7 +5,7 @@ import { Icon } from "../shared/Icon/Icon";
 
 function GardenFreshBanner() {
   return (
-    <div className="bg-[#EEEBE4] rounded-3xl row-span-1 relative top-0 left-0 hidden md:block  xl:col-span-2">
+    <div className="bg-[#EEEBE4] rounded-3xl row-span-1 relative top-0 left-0 hidden md:block  xl:col-span-2 min-h-170">
       <Image
         src={"/banners/Dagan-welcome.png"}
         height={44}

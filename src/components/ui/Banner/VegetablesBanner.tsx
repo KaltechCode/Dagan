@@ -6,7 +6,7 @@ import { Icon } from "../shared/Icon/Icon";
 
 function VegetablesBanner() {
   return (
-    <div className="bg-[#EEEBE4] rounded-3xl row-span-1 relative top-0 left-0 hidden xl:block">
+    <div className="bg-[#EEEBE4] rounded-3xl h-full relative top-0 left-0 hidden xl:block min-h-170">
       <Image
         src={"/banners/Dagan-welcome.png"}
         height={44}
