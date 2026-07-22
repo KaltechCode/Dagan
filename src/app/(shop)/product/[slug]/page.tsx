@@ -15,7 +15,8 @@ export default async function Page({ params }: Props) {
   const { slug } = await params;
 
   const product = await productService.getProductBySlug(slug);
-  console.log("detail", product);
+
+  console.log("detail", slug);
   return (
     <div className="bg-white">
       <Header />
