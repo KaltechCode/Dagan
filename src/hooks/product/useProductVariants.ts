@@ -51,7 +51,9 @@ export function useProductVariants(product: Product) {
   }, [product, selectedOptions]);
 
   const availableOptions = useMemo(() => {
-    return product.attributes;
+    return Object.fromEntries(
+      product.attributes.map((attr) => [attr.name, attr.options]),
+    );
   }, [product]);
 
   function selectOption(attribute: string, option: string) {

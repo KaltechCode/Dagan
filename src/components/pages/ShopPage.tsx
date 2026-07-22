@@ -10,7 +10,6 @@ import ShopLayout from "../shop/ShopLayout";
 import FilterSidebar from "@/widget/filter/FilterSidebar";
 import EmptyProducts from "../product/EmptyProduct";
 import ProductList from "../product/productGrid/ProductList";
-import MobileFilterDrawer from "@/widget/header/MobileFilterDrawer";
 import ProductGrid from "../product/productGrid/ProductGrid";
 import { SORT_OPTIONS } from "@/constants/order";
 
@@ -91,8 +90,8 @@ export default function ShopPage() {
           onPageChange={(page) => update({ page })}
         />
       )} */}
-
-      <MobileFilterDrawer open={filtersOpen} onOpenChange={setFiltersOpen} />
+      {/* 
+      <MobileFilterDrawer open={filtersOpen} onOpenChange={setFiltersOpen} /> */}
     </div>
   );
 }

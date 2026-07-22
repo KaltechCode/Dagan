@@ -18,7 +18,7 @@ export default function ProductVariantSelector({
           slug={attribute.slug}
           options={attribute.options}
           selectedValue={selectedOptions[attribute.slug]}
-          availableOptions={availableOptions[attribute.slug] ?? []}
+          availableOptions={availableOptions.options ?? []}
           onSelect={onSelect}
         />
       ))}

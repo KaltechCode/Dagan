@@ -35,14 +35,14 @@ export default function ProductInfo({ product }: Props) {
         onSale={currentProduct.regularPrice > currentProduct.salePrice}
       />
 
-      {/* {product.type === "variable" && (
+      {product.type === "variable" && (
         <ProductVariantSelector
           attributes={product.attributes}
           selectedOptions={selectedOptions}
           availableOptions={availableOptions}
           onSelect={selectOption}
-        /> */}
-      {/* )} */}
+        />
+      )}
 
       <AddToCartSection product={product} />
 
