@@ -10,13 +10,13 @@ interface Props {
 
 export default function ProductGallery({ product }: Props) {
   const [image, setImage] = useState(
-    product.images ? product.images[0]?.src : "",
+    product.images ? product.images[0]?.src : "/placeholder",
   );
 
   console.log("Image", image);
 
   return (
-    <div className="xmd:grid xmd:grid-cols-4 grid-rows-1 xmd:gap-3 lg:grid lg:grid-cols-5 lg:gap-4">
+    <div className="border border-gray-200 py-5 px-5 rounded-md xmd:p-7">
       <ProductImage
         src={image}
         alt={product.name}
@@ -24,7 +24,7 @@ export default function ProductGallery({ product }: Props) {
         priority
       />
 
-      <div className="mt-4 flex xmd:flex-col gap-3 xmd:col-span-1 row-span-1 xmd:grid lg:grid grid-cols-2 lg:col-span-1 lg:order-1">
+      <div className="mt-4 flex gap-3">
         {product.images &&
           product.images.map((img, key) => (
             <button key={key} onClick={() => setImage(img.src)}>

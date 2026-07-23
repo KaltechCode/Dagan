@@ -8,7 +8,7 @@ function TabsBox({ html, title }: DescriptionTabProps) {
     <div className="">
       <h3 className="small-title mb-2">{title}</h3>
       <div
-        className="prose max-w-none"
+        className="prose max-w-none list-decimal"
         dangerouslySetInnerHTML={{
           __html: html,
         }}

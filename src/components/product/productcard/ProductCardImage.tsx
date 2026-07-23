@@ -19,6 +19,8 @@ export default function ProductCardImage({ product, priority }: Props) {
         alt={product.name}
         priority={priority}
         className="aspect-square"
+        height={2500}
+        width={2500}
       />
     </Link>
   );

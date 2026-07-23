@@ -2,15 +2,11 @@
 
 import { useGetRelatedProductsQuery } from "@/redux/api/productApi";
 
-export function useRelatedProducts(
-  categoryIds: number[],
-  currentProductId: number,
-  slug: string,
-) {
+export function useRelatedProducts(slug: string) {
   const query = useGetRelatedProductsQuery(slug);
 
   return {
-    products: query.data ?? [],
+    relatedProducts: query.data ?? [],
 
     loading: query.isLoading,
     refetch: query.refetch,

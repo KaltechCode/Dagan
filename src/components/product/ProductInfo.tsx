@@ -8,6 +8,7 @@ import ProductShortDescription from "./ProductShortDescription";
 import ProductActions from "./productcard/ProductAction";
 import ProductRating from "./ProductRating/ProductRatin";
 import ProductTitle from "./ProductTitle/Index";
+import ProductInfoDetails from "./ProductMaterial";
 
 interface Props {
   product: Product;
@@ -15,19 +16,19 @@ interface Props {
 
 export default function ProductInfo({ product }: Props) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 border border-gray-200 rounded-md px-5 py-5 xmd:p-7">
       <ProductTitle title={product.name} />
-
-      <ProductRating
-        rating={product.averageRating}
-        reviews={product.reviewCount}
-      />
 
       <ProductPrice
         price={product.price}
         regularPrice={product.regularPrice}
         salePrice={product.salePrice}
         onSale={product.onSale}
+      />
+
+      <ProductRating
+        rating={product.averageRating}
+        reviews={product.reviewCount}
       />
 
       <ProductStock
@@ -37,9 +38,17 @@ export default function ProductInfo({ product }: Props) {
 
       <ProductShortDescription html={product.shortDescription} />
 
+      {product.details.material && (
+        <ProductInfoDetails html={product.details.material} title="Materials" />
+      )}
       <ProductActions product={product} showQuantityControl={false} />
 
-      {/* <ProductMeta product={product} /> */}
+      {product.details.package_includes && (
+        <ProductInfoDetails
+          html={product.details.package_includes}
+          title="Package Includes"
+        />
+      )}
     </div>
   );
 }

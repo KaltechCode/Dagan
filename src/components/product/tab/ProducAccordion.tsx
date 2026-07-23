@@ -62,12 +62,6 @@ export default function ProductAccordion({ product }: ProductAccordionProps) {
         <DescriptionTab html={product.description} />
       </Item>
 
-      {product.details?.material && (
-        <Item value="material" title="Material">
-          <TabsBox html={product.details.material} />
-        </Item>
-      )}
-
       {product.details?.fit && (
         <Item value="fit" title="Fit For">
           <TabsBox html={product.details.fit} />
@@ -84,11 +78,6 @@ export default function ProductAccordion({ product }: ProductAccordionProps) {
           <TabsBox html={product.details.perfect_for} />
         </Item>
       )}
-
-      <Item value="specifications" title="Specifications">
-        <SpecificationsTab attributes={product.attributes} />
-      </Item>
-
       <Item value="shipping" title="Shipping & Returns">
         <ShippingReturnsTab />
       </Item>

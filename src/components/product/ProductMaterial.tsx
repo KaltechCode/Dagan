@@ -1,12 +1,13 @@
 import DOMPurify from "isomorphic-dompurify";
 interface ProductShortDescriptionProps {
   html: string;
+  title?: string;
 }
 
-function ProductMaterial({ html }: ProductShortDescriptionProps) {
+function ProductInfoDetails({ html, title }: ProductShortDescriptionProps) {
   return (
     <div className="">
-      <h4 className="small-title mb-2">Material</h4>
+      <h4 className="small-title mb-2">{title}</h4>
       <div
         className="prose max-w-none"
         dangerouslySetInnerHTML={{
@@ -17,4 +18,4 @@ function ProductMaterial({ html }: ProductShortDescriptionProps) {
   );
 }
 
-export default ProductMaterial;
+export default ProductInfoDetails;

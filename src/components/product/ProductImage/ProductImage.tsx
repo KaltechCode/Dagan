@@ -9,8 +9,8 @@ import { cn } from "@/libs/utils";
 export default function ProductImage({
   src,
   alt,
-  width = 580,
-  height = 580,
+  width = 2500,
+  height = 2500,
   priority = false,
   rounded = true,
   hoverSrc,
@@ -31,14 +31,13 @@ export default function ProductImage({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <Image
+      <img
         src={src}
         alt={alt}
         width={width}
         height={height}
         sizes={sizes}
-        priority={priority}
-        className="w-full transition-transform duration-300 hover:scale-105 aspect-square"
+        className=" transition-transform duration-300 hover:scale-105 aspect-square object-fit"
         onError={() => setImage("/images/product-placeholder.webp")}
       />
     </div>

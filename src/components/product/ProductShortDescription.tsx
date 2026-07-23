@@ -1,5 +1,3 @@
-import DOMPurify from "isomorphic-dompurify";
-
 interface ProductShortDescriptionProps {
   html: string;
 }
@@ -14,7 +12,7 @@ export default function ProductShortDescription({
       <div
         className="prose max-w-none"
         dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(html),
+          __html: html,
         }}
       />
     </div>
