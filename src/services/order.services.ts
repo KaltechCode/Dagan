@@ -1,35 +1,26 @@
-import { API } from "@/libs/api/endpoints";
+import type { Order } from "@/types/order";
 import { wooCommerceClient } from "@/libs/woocommerce/client";
 
-import type {
-  OrderNote,
-  OrderQuery,
-  OrderResponse,
-  OrdersResponse,
-} from "@/types/order";
-
 class OrderService {
-  async getOrders(query?: OrderQuery): Promise<OrdersResponse> {
-    return wooCommerceClient.get<OrdersResponse>(
-      API.ORDERS,
-      query as Record<string, unknown>,
-    );
+  /**
+   * Get authenticated customer's orders
+   */
+  async getOrders(): Promise<Order[]> {
+    return wooCommerceClient.get<Order[]>("/orders");
   }
 
-  async getOrder(id: number): Promise<OrderResponse> {
-    return wooCommerceClient.get<OrderResponse>(`${API.ORDER}/${id}`);
+  /**
+   * Get a single order
+   */
+  async getOrder(id: number | string): Promise<Order> {
+    return wooCommerceClient.get<Order>(`/orders/${id}`);
   }
 
-  async cancelOrder(id: number): Promise<OrderResponse> {
-    return wooCommerceClient.post<OrderResponse>(`${API.ORDER}/${id}/cancel`);
-  }
-
-  async payOrder(id: number): Promise<{ paymentUrl: string }> {
-    return wooCommerceClient.post(`${API.ORDER}/${id}/pay`);
-  }
-
-  async getOrderNotes(id: number): Promise<OrderNote[]> {
-    return wooCommerceClient.get<OrderNote[]>(`${API.ORDER}/${id}/notes`);
+  /**
+   * Cancel an order
+   */
+  async cancelOrder(id: number | string): Promise<Order> {
+    return wooCommerceClient.post<Order>(`/orders/${id}`, {});
   }
 }
 

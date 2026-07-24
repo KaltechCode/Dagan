@@ -1,48 +1,52 @@
 import { z } from "zod";
 
-export const LoginSchema = z.object({
-  email: z.email(),
-
-  password: z.string().min(8),
-});
-
-export type LoginInput = z.infer<typeof LoginSchema>;
-
 export const loginSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Email is required.")
-    .email("Enter a valid email address."),
+  username: z.string().trim().min(1, "Username or email is required."),
 
   password: z.string().min(1, "Password is required."),
-
-  remember: z.boolean(),
 });
 
-export type LoginSchema = z.infer<typeof loginSchema>;
+export type LoginFormValues = z.infer<typeof loginSchema>;
 
 export const registerSchema = z
   .object({
-    firstName: z.string().min(2, "First name is required."),
+    username: z
+      .string()
+      .trim()
+      .min(3, "Username must be at least 3 characters.")
+      .max(30, "Username cannot exceed 30 characters.")
+      .regex(
+        /^[a-zA-Z0-9._-]+$/,
+        "Username can only contain letters, numbers, dots, underscores, and hyphens.",
+      ),
 
-    lastName: z.string().min(2, "Last name is required."),
+    email: z.string().trim().email("Please enter a valid email address."),
 
-    email: z.string().email("Enter a valid email."),
+    first_name: z
+      .string()
+      .trim()
+      .max(50, "First name cannot exceed 50 characters.")
+      .optional(),
 
-    password: z.string().min(8, "Password must contain at least 8 characters."),
+    last_name: z
+      .string()
+      .trim()
+      .max(50, "Last name cannot exceed 50 characters.")
+      .optional(),
 
-    confirmPassword: z.string(),
+    password: z
+      .string()
+      .min(8, "Password must be at least 8 characters.")
+      .max(100, "Password cannot exceed 100 characters."),
 
-    acceptTerms: z.boolean().refine((value) => value, {
-      message: "You must accept the terms and conditions.",
-    }),
+    confirm_password: z.string().min(8, "Please confirm your password."),
   })
-  .refine((values) => values.password === values.confirmPassword, {
-    path: ["confirmPassword"],
+  .refine((data) => data.password === data.confirm_password, {
     message: "Passwords do not match.",
+    path: ["confirm_password"],
   });
 
-export type RegisterSchema = z.infer<typeof registerSchema>;
+export type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export const forgotPasswordSchema = z.object({
   email: z.string().email("Enter a valid email."),

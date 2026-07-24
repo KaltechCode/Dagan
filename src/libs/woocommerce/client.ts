@@ -1,4 +1,7 @@
+import { tokenService } from "@/services/token.services";
 import { request } from "../request";
+
+const accessToken = tokenService.getAccessToken();
 
 export class WooCommerceClient {
   get<T>(endpoint: string, params?: Record<string, unknown>) {

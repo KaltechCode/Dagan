@@ -1,52 +1,66 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback } from "react";
 
 import {
-  useCancelOrderMutation,
   useGetOrdersQuery,
-  usePayOrderMutation,
+  useGetOrderQuery,
+  useCancelOrderMutation,
 } from "@/redux/api/orderApi";
 
-import type { OrderQuery } from "@/types/order";
+export function useOrders() {
+  const {
+    data: orders = [],
+    isLoading,
+    isFetching,
+    error,
+    refetch,
+  } = useGetOrdersQuery();
 
-export function useOrders(query?: OrderQuery) {
-  const ordersQuery = useGetOrdersQuery(query);
+  const [cancelOrderMutation] = useCancelOrderMutation();
 
-  const [cancelOrderMutation, cancelState] = useCancelOrderMutation();
-
-  const [payOrderMutation, payState] = usePayOrderMutation();
-
-  return useMemo(
-    () => ({
-      orders: ordersQuery.data?.orders ?? [],
-
-      total: ordersQuery.data?.total ?? 0,
-
-      page: ordersQuery.data?.page ?? 1,
-
-      pages: ordersQuery.data?.pages ?? 1,
-
-      loading: ordersQuery.isLoading,
-
-      fetching: ordersQuery.isFetching,
-
-      error: ordersQuery.isError,
-
-      refetch: ordersQuery.refetch,
-
-      cancelOrder: (id: number) => cancelOrderMutation(id).unwrap(),
-
-      retryPayment: (id: number) => payOrderMutation(id).unwrap(),
-
-      mutating: cancelState.isLoading || payState.isLoading,
-    }),
-    [
-      ordersQuery,
-      cancelOrderMutation,
-      payOrderMutation,
-      cancelState.isLoading,
-      payState.isLoading,
-    ],
+  const cancelOrder = useCallback(
+    async (orderId: number | string) => {
+      return cancelOrderMutation(orderId).unwrap();
+    },
+    [cancelOrderMutation],
   );
+
+  return {
+    orders,
+
+    isLoading,
+    isFetching,
+    error,
+
+    refetch,
+
+    cancelOrder,
+  };
+}
+
+/**
+ * Hook for a single order
+ */
+export function useOrder(id: number | string) {
+  const {
+    data: order,
+    isLoading,
+    isFetching,
+    error,
+    refetch,
+  } = useGetOrderQuery(id, {
+    skip: !id,
+  });
+
+  return {
+    order,
+
+    isLoading,
+    isFetching,
+
+    error,
+
+    refetch,
+  };
 }

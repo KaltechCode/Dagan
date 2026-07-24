@@ -1,59 +1,42 @@
-import {
+import type {
   AuthResponse,
-  ForgotPasswordRequest,
-  LoginRequest,
   RegisterRequest,
+  LoginRequest,
+  ForgotPasswordRequest,
   ResetPasswordRequest,
-  UpdatePasswordRequest,
-  UpdateProfileRequest,
-} from "@/types/auths";
-import { API } from "@/libs/api/endpoints";
+  ChangePasswordRequest,
+  LogoutRequest,
+} from "@/types/auth";
+
 import { wooCommerceClient } from "../libs/woocommerce/client";
-// import {
-//   AuthResponse,
-//   ForgotPasswordRequest,
-//   LoginRequest,
-//   RegisterRequest,
-//   ResetPasswordRequest,
-//   UpdatePasswordRequest,
-//   UpdateProfileRequest,
-// } from "../";
 
 class AuthService {
-  login(payload: LoginRequest): Promise<AuthResponse> {
-    return wooCommerceClient.post<AuthResponse>(API.LOGIN, payload);
+  async register(payload: RegisterRequest): Promise<AuthResponse> {
+    return wooCommerceClient.post<AuthResponse>("/auth/register", payload);
   }
 
-  register(payload: RegisterRequest): Promise<AuthResponse> {
-    return wooCommerceClient.post<AuthResponse>(API.REGISTER, payload);
+  async login(payload: LoginRequest): Promise<AuthResponse> {
+    return wooCommerceClient.post<AuthResponse>("/auth/login", payload);
   }
 
-  logout(): Promise<void> {
-    return wooCommerceClient.post<void>(API.LOGOUT);
+  async logout(payload: LogoutRequest): Promise<void> {
+    await wooCommerceClient.post("/auth/logout", payload);
   }
 
-  forgotPassword(payload: ForgotPasswordRequest): Promise<void> {
-    return wooCommerceClient.post<void>(API.FORGOT_PASSWORD, payload);
+  async refresh(): Promise<AuthResponse> {
+    return wooCommerceClient.post<AuthResponse>("/auth/refresh");
   }
 
-  resetPassword(payload: ResetPasswordRequest): Promise<void> {
-    return wooCommerceClient.post<void>(API.RESET_PASSWORD, payload);
+  async forgotPassword(payload: ForgotPasswordRequest): Promise<void> {
+    await wooCommerceClient.post("/auth/forgot-password", payload);
   }
 
-  getProfile(): Promise<AuthResponse> {
-    return wooCommerceClient.get<AuthResponse>(API.ME);
+  async resetPassword(payload: ResetPasswordRequest): Promise<void> {
+    await wooCommerceClient.post("/auth/reset-password", payload);
   }
 
-  updateProfile(payload: UpdateProfileRequest): Promise<AuthResponse> {
-    return wooCommerceClient.put<AuthResponse>(API.PROFILE, payload);
-  }
-
-  updatePassword(payload: UpdatePasswordRequest): Promise<void> {
-    return wooCommerceClient.put<void>(API.PASSWORD, payload);
-  }
-
-  refreshSession(): Promise<AuthResponse> {
-    return wooCommerceClient.post<AuthResponse>(API.REFRESH_TOKEN);
+  async changePassword(payload: ChangePasswordRequest): Promise<void> {
+    await wooCommerceClient.post("/auth/change-password", payload);
   }
 }
 

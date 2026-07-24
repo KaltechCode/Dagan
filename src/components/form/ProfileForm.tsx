@@ -1,95 +1,93 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "@/components/ui/shared/Button";
+import { profileSchema, type ProfileFormValues } from "@/schema/customer";
 import { useCustomer } from "@/hooks/customer/useCustomer";
-import { useUpdateProfileMutation } from "@/redux/api/authApi";
-import { UpdateProfileRequest } from "@/types/customer";
-import { profileSchema } from "@/schema/customer";
-import FormGrid from "./FormGrid";
 import { Input } from "../ui/shared/Input/Input";
-import FormActions from "./FormAction";
-import FormSection from "./FormSection";
-import Form from "./Form";
+import { Button } from "../ui/shared/Button";
 
 export default function ProfileForm() {
-  const { customer } = useCustomer();
-
-  const [updateProfile, { isLoading }] = useUpdateProfileMutation();
+  const { customer, updateProfile, isLoading } = useCustomer();
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
-  } = useForm<UpdateProfileRequest>({
+    formState: { errors, isSubmitting, isDirty },
+  } = useForm<ProfileFormValues>({
     resolver: zodResolver(profileSchema),
+
+    defaultValues: {
+      first_name: "",
+      last_name: "",
+      display_name: "",
+      email: "",
+    },
   });
 
   useEffect(() => {
     if (!customer) return;
 
     reset({
-      firstName: customer.firstName,
-      lastName: customer.lastName,
-      displayName: customer.displayName,
-      email: customer.email,
-      phone: customer.phone ?? "",
+      first_name: customer.first_name ?? "",
+      last_name: customer.last_name ?? "",
+      display_name: customer.display_name ?? "",
+      email: customer.email ?? "",
     });
   }, [customer, reset]);
 
-  async function onSubmit(values: UpdateProfileRequest) {
-    await updateProfile(values).unwrap();
+  const onSubmit = async (values: ProfileFormValues) => {
+    await updateProfile(values);
+  };
+
+  if (isLoading && !customer) {
+    return <div className="space-y-4">Loading profile...</div>;
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormSection
-        title="Personal Information"
-        description="Update your account details."
-      >
-        <FormGrid>
-          <Input
-            label="First Name"
-            error={errors.firstName?.message}
-            {...register("firstName")}
-          />
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <Input
+        label="First Name"
+        required
+        error={errors.first_name?.message}
+        {...register("first_name")}
+      />
 
-          <Input
-            label="Last Name"
-            error={errors.lastName?.message}
-            {...register("lastName")}
-          />
+      <Input
+        label="Last Name"
+        required
+        error={errors.last_name?.message}
+        {...register("last_name")}
+      />
 
-          <Input
-            label="Display Name"
-            error={errors.displayName?.message}
-            {...register("displayName")}
-          />
+      <Input
+        label="Display Name"
+        required
+        helperText="This name will be shown publicly."
+        error={errors.display_name?.message}
+        {...register("display_name")}
+      />
 
-          <Input
-            type="email"
-            label="Email"
-            error={errors.email?.message}
-            {...register("email")}
-          />
+      <Input
+        type="email"
+        label="Email Address"
+        required
+        error={errors.email?.message}
+        {...register("email")}
+      />
 
-          <Input
-            label="Phone"
-            error={errors.phone?.message}
-            {...register("phone")}
-          />
-        </FormGrid>
-      </FormSection>
-
-      <FormActions>
-        <Button type="submit" loading={isLoading}>
+      <div className="flex justify-end">
+        <Button
+          type="submit"
+          loading={isSubmitting}
+          disabled={!isDirty || isSubmitting}
+        >
           Save Changes
         </Button>
-      </FormActions>
-    </Form>
+      </div>
+    </form>
   );
 }

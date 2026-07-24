@@ -1,94 +1,58 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
-import { Button } from "@/components/ui/shared/Button";
-import { useLoginMutation } from "@/redux/api/authApi";
-import { LoginRequest } from "@/types/auths";
-import { LoginSchema } from "@/schema/auth";
-import PasswordInput from "./PasswordInput";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from "@/hooks/auth/useAuth";
+import { type LoginFormValues, loginSchema } from "@/schema/auth";
 import { Input } from "../ui/shared/Input/Input";
+import { Button } from "../ui/shared/Button";
 
 export default function LoginForm() {
-  const router = useRouter();
-
-  const [login, { isLoading }] = useLoginMutation();
+  const { login, isLoggingIn, loginError } = useAuth();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setError,
-  } = useForm<LoginRequest>({
-    resolver: zodResolver(LoginSchema),
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
-      remember: true,
     },
   });
 
-  const onSubmit = async (values: LoginRequest) => {
-    try {
-      await login(values).unwrap();
-
-      router.replace("/account");
-      router.refresh();
-    } catch (error) {
-      const message =
-        error && typeof error === "object" && "message" in error
-          ? String(error.message)
-          : "Invalid email or password.";
-
-      setError("root", {
-        message,
-      });
-    }
-  };
+  async function onSubmit(values: LoginFormValues) {
+    await login(values);
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <Input
-        label="Email"
-        type="email"
-        autoComplete="email"
-        error={errors.email?.message}
-        {...register("email")}
-      />
-
-      <PasswordInput
-        label="Password"
-        autoComplete="current-password"
-        error={errors.password?.message}
-        {...register("password")}
-      />
-
-      <label className="flex items-center gap-2">
-        <input type="checkbox" {...register("remember")} />
-
-        <span className="text-sm">Remember me</span>
-      </label>
-
-      {errors.root && (
-        <p className="text-sm text-red-500">{errors.root.message}</p>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      {loginError && (
+        <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+          {"data" in loginError
+            ? ((loginError.data as { message?: string })?.message ??
+              "Login failed.")
+            : "Login failed."}
+        </div>
       )}
 
-      <Button type="submit" loading={isLoading} className="w-full">
-        Sign In
+      <Input
+        label="Username or Email"
+        {...register("username")}
+        error={errors.username?.message}
+      />
+
+      <Input
+        label="Password"
+        type="password"
+        {...register("password")}
+        error={errors.password?.message}
+      />
+
+      <Button type="submit" disabled={isLoggingIn} className="w-full">
+        {isLoggingIn ? "Signing In..." : "Sign In"}
       </Button>
-
-      <div className="flex justify-between text-sm">
-        <Link href="/forgot-password" className="hover:text-primary">
-          Forgot password?
-        </Link>
-
-        <Link href="/register" className="hover:text-primary">
-          Create account
-        </Link>
-      </div>
     </form>
   );
 }

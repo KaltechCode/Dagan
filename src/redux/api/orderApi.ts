@@ -1,87 +1,38 @@
 import { executeQuery } from "@/libs/api/helper";
 import { baseApi } from "./baseApi";
 
-import type {
-  OrderNote,
-  OrderQuery,
-  OrderResponse,
-  OrdersResponse,
-} from "@/types/order";
+import type { Order } from "@/types/order";
 import { orderService } from "@/services/order.services";
 
-export const ordersApi = baseApi.injectEndpoints({
+export const orderApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getOrders: builder.query<OrdersResponse, OrderQuery | undefined>({
-      queryFn(query) {
-        return executeQuery(() => orderService.getOrders(query));
-      },
+    /**
+     * Get authenticated customer's orders
+     */
+    getOrders: builder.query<Order[], void>({
+      queryFn: () => executeQuery(() => orderService.getOrders()),
 
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.orders.map((order) => ({
-                type: "Orders" as const,
-                id: order.id,
-              })),
-              {
-                type: "Orders",
-                id: "LIST",
-              },
-            ]
-          : [
-              {
-                type: "Orders",
-                id: "LIST",
-              },
-            ],
+      providesTags: ["Orders"],
     }),
 
-    getOrder: builder.query<OrderResponse, number>({
-      queryFn(id) {
-        return executeQuery(() => orderService.getOrder(id));
-      },
+    /**
+     * Get a single order
+     */
+    getOrder: builder.query<Order, number | string>({
+      queryFn: (id) => executeQuery(() => orderService.getOrder(id)),
 
-      providesTags: (_, __, id) => [
-        {
-          type: "Orders",
-          id,
-        },
-      ],
+      providesTags: (_result, _error, id) => [{ type: "Orders", id }],
     }),
 
-    cancelOrder: builder.mutation<OrderResponse, number>({
-      queryFn(id) {
-        return executeQuery(() => orderService.cancelOrder(id));
-      },
+    /**
+     * Cancel an order
+     */
+    cancelOrder: builder.mutation<Order, number | string>({
+      queryFn: (id) => executeQuery(() => orderService.cancelOrder(id)),
 
-      invalidatesTags: (_, __, id) => [
-        {
-          type: "Orders",
-          id,
-        },
-        {
-          type: "Orders",
-          id: "LIST",
-        },
-      ],
-    }),
-
-    payOrder: builder.mutation<{ paymentUrl: string }, number>({
-      queryFn(id) {
-        return executeQuery(() => orderService.payOrder(id));
-      },
-    }),
-
-    getOrderNotes: builder.query<OrderNote[], number>({
-      queryFn(id) {
-        return executeQuery(() => orderService.getOrderNotes(id));
-      },
-
-      providesTags: (_, __, id) => [
-        {
-          type: "Orders",
-          id,
-        },
+      invalidatesTags: (_result, _error, id) => [
+        "Orders",
+        { type: "Orders", id },
       ],
     }),
   }),
@@ -92,9 +43,9 @@ export const ordersApi = baseApi.injectEndpoints({
 export const {
   useGetOrdersQuery,
   useLazyGetOrdersQuery,
+
   useGetOrderQuery,
   useLazyGetOrderQuery,
+
   useCancelOrderMutation,
-  usePayOrderMutation,
-  useGetOrderNotesQuery,
-} = ordersApi;
+} = orderApi;

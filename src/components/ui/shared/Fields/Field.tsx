@@ -33,7 +33,7 @@ import { FieldError } from "react-hook-form";
 interface Props {
   label: string;
   children: ReactNode;
-  error?: FieldError;
+  error?: string;
 }
 
 export default function Field({ label, children, error }: Props) {
@@ -43,7 +43,7 @@ export default function Field({ label, children, error }: Props) {
 
       {children}
 
-      {error && <p className="text-sm text-red-600">{error.message}</p>}
+      {error && <p className="text-sm text-red-600">{error}</p>}
     </div>
   );
 }
@@ -53,7 +53,7 @@ interface FieldProps {
 
   children: ReactNode;
 
-  error?: FieldError;
+  error?: string;
 
   description?: string;
 
@@ -85,7 +85,7 @@ export function FieldTwo({
 
       {children}
 
-      {error && <p className="text-sm text-red-600">{error.message}</p>}
+      {error && <p className="text-sm text-red-600">{error}</p>}
     </div>
   );
 }

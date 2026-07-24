@@ -1,46 +1,103 @@
 import { z } from "zod";
 
 export const profileSchema = z.object({
-  firstName: z.string().trim().min(2, "First name is required."),
+  first_name: z
+    .string()
+    .trim()
+    .min(2, "First name must be at least 2 characters")
+    .max(50, "First name must not exceed 50 characters"),
 
-  lastName: z.string().trim().min(2, "Last name is required."),
+  last_name: z
+    .string()
+    .trim()
+    .min(2, "Last name must be at least 2 characters")
+    .max(50, "Last name must not exceed 50 characters"),
 
-  displayName: z.string().trim().min(2, "Display name is required."),
+  display_name: z
+    .string()
+    .trim()
+    .min(2, "Display name must be at least 2 characters")
+    .max(100, "Display name must not exceed 100 characters"),
 
-  email: z.string().trim().email("Enter a valid email."),
-
-  phone: z.string().optional(),
+  email: z.string().trim().email("Please enter a valid email address"),
 });
 
-export type ProfileSchema = z.infer<typeof profileSchema>;
+export type ProfileFormValues = z.infer<typeof profileSchema>;
 
-export const addressSchema = z.object({
-  firstName: z.string().min(2, "First name is required."),
+export const billingSchema = z.object({
+  first_name: z
+    .string()
+    .trim()
+    .min(2, "First name must be at least 2 characters")
+    .max(50, "First name must not exceed 50 characters"),
 
-  lastName: z.string().min(2, "Last name is required."),
+  last_name: z
+    .string()
+    .trim()
+    .min(2, "Last name must be at least 2 characters")
+    .max(50, "Last name must not exceed 50 characters"),
 
-  company: z.string().optional(),
+  company: z
+    .string()
+    .trim()
+    .max(100, "Company name must not exceed 100 characters")
+    .optional()
+    .or(z.literal("")),
 
-  address1: z.string().min(3, "Address is required."),
-
-  address2: z.string().optional(),
-
-  city: z.string().min(2, "City is required."),
-
-  state: z.string().min(2, "State is required."),
-
-  postcode: z.string().min(2, "Postcode is required."),
-
-  country: z.string().min(2, "Country is required."),
+  email: z.string().trim().email("Please enter a valid email address"),
 
   phone: z
     .string()
-    .regex(
-      /^[\+]?[(]?[0-9]{3}[)]?[-s\.]?[0-9]{3}[-s\.]?[0-9]{4,6}$/im,
-      "Please enter a valid phone number",
-    ),
+    .trim()
+    .min(7, "Phone number is too short")
+    .max(20, "Phone number is too long"),
 
-  email: z.string().pipe(z.email("Enter a valid Email")),
+  address_1: z.string().trim().min(5, "Address is required"),
+
+  address_2: z.string().trim().optional().or(z.literal("")),
+
+  city: z.string().trim().min(2, "City is required"),
+
+  state: z.string().trim().min(2, "State is required"),
+
+  postcode: z.string().trim().min(2, "Postcode is required"),
+
+  country: z.string().trim().min(2, "Country is required"),
 });
 
-export type AddressSchema = z.infer<typeof addressSchema>;
+export type BillingFormValues = z.infer<typeof billingSchema>;
+
+export const shippingSchema = z.object({
+  first_name: z
+    .string()
+    .trim()
+    .min(2, "First name must be at least 2 characters")
+    .max(50, "First name must not exceed 50 characters"),
+
+  last_name: z
+    .string()
+    .trim()
+    .min(2, "Last name must be at least 2 characters")
+    .max(50, "Last name must not exceed 50 characters"),
+
+  company: z
+    .string()
+    .trim()
+    .max(100, "Company name must not exceed 100 characters")
+    .optional()
+    .or(z.literal("")),
+
+  address_1: z.string().trim().min(5, "Address is required"),
+
+  address_2: z.string().trim().optional().or(z.literal("")),
+
+  city: z.string().trim().min(2, "City is required"),
+
+  state: z.string().trim().min(2, "State is required"),
+
+  postcode: z.string().trim().min(2, "Postcode is required"),
+
+  country: z.string().trim().min(2, "Country is required"),
+});
+
+export type ShippingFormValues = z.infer<typeof shippingSchema>;

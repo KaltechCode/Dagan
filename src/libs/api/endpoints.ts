@@ -25,10 +25,6 @@ export const API = {
 
   PAYMENT_GATEWAYS: "/payment-gateways",
 
-  LOGIN: "/login",
-
-  REGISTER: "/register",
-
   ORDERS: "/orders",
 
   ORDER: (id: number | string) => `/orders/${id}`,
@@ -43,27 +39,15 @@ export const API = {
 
   LOGOUT: "/logout",
 
-  ME: "/me",
-
-  PROFILE: "/profile",
-
-  PASSWORD: "/password",
-
-  FORGOT_PASSWORD: "/forgot-password",
-
-  RESET_PASSWORD: "/reset-password",
-
-  REFRESH_TOKEN: "/refresh-token",
-
-  CUSTOMER: "/customer",
-
-  CUSTOMER_PROFILE: "/customer/profile",
-
-  CUSTOMER_BILLING: "/customer/billing",
-
-  CUSTOMER_SHIPPING: "/customer/shipping",
-
-  CUSTOMER_AVATAR: "/customer/avatar",
+  AUTH: {
+    REGISTER: "/auth/register",
+    LOGIN: "/auth/login",
+    LOGOUT: "/auth/logout",
+    REFRESH: "/auth/refresh",
+    FORGOT_PASSWORD: "/auth/forgot-password",
+    RESET_PASSWORD: "/auth/reset-password",
+    CHANGE_PASSWORD: "/auth/change-password",
+  },
 
   CART: "/cart",
 

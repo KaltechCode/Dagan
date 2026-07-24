@@ -1,143 +1,84 @@
-import { CartTotals } from "./cart";
-import { CustomerAddress } from "./customer";
-
-export interface CommerceItemAttribute {
-  id?: number;
-
-  name: string;
-
-  option: string;
+export interface OrderAddress {
+  first_name: string;
+  last_name: string;
+  company: string;
+  address_1: string;
+  address_2: string;
+  city: string;
+  state: string;
+  postcode: string;
+  country: string;
+  email?: string;
+  phone?: string;
 }
 
-export interface CommerceItemImage {
-  id?: number;
-
-  src: string;
-
-  alt?: string;
-}
-
-export interface CommerceItem {
-  productId: number;
-
-  variationId?: number;
-
-  sku?: string;
-
-  slug: string;
-
+export interface OrderItem {
+  id: number;
+  product_id: number;
+  variation_id: number;
   name: string;
-
-  permalink?: string;
-
-  image: CommerceItemImage;
-
-  attributes: CommerceItemAttribute[];
-
+  sku: string;
+  quantity: number;
   price: string;
+  subtotal: string;
+  total: string;
+  image?: string;
+}
 
-  regularPrice?: string;
-
-  salePrice?: string;
+export interface OrderNote {
+  id: number;
+  note: string;
+  author: string;
+  created_at: string;
+  customer_note: boolean;
 }
 
 export type OrderStatus =
   | "pending"
   | "processing"
+  | "on-hold"
   | "completed"
   | "cancelled"
-  | "failed"
-  | "on-hold"
-  | "refunded";
-
-export interface OrderItem extends CommerceItem {
-  id: number;
-
-  quantity: number;
-
-  refundedQuantity: number;
-
-  subtotal: string;
-
-  subtotalTax: string;
-
-  total: string;
-
-  totalTax: string;
-}
-
-export interface OrderNote {
-  id: number;
-
-  note: string;
-
-  customerNote: boolean;
-
-  createdAt: string;
-}
-
-export interface CancelOrderRequest {
-  orderId: number;
-}
-
-export interface PayOrderRequest {
-  orderId: number;
-}
+  | "refunded"
+  | "failed";
 
 export interface Order {
   id: number;
-
   number: string;
 
   status: OrderStatus;
 
-  createdAt: string;
+  currency: string;
 
-  paymentMethod: string;
+  subtotal: string;
+  discount_total: string;
+  shipping_total: string;
+  total_tax: string;
+  total: string;
 
-  paymentMethodTitle: string;
+  payment_method: string;
+  payment_method_title: string;
 
-  billing: CustomerAddress;
+  created_at: string;
+  updated_at: string;
 
-  shipping: CustomerAddress;
+  item_count: number;
+
+  billing: OrderAddress;
+  shipping: OrderAddress;
 
   items: OrderItem[];
 
-  totals: CartTotals;
-
-  customerNote?: string;
-}
-
-export interface OrderResponse {
-  order: Order;
+  notes?: OrderNote[];
 }
 
 export interface OrdersResponse {
-  orders: Order[];
-
+  items: Order[];
   total: number;
-
-  page: number;
-
-  pages: number;
 }
 
-export interface OrderQuery {
-  page?: number;
-
-  perPage?: number;
-
-  status?: OrderStatus;
-
-  search?: string;
-
-  from?: string;
-
-  to?: string;
-}
-
-export interface StatusDefinition {
-  label: string;
-
-  className: string;
+export interface CancelOrderResponse {
+  success: boolean;
+  message: string;
+  order: Order;
 }

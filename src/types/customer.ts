@@ -1,86 +1,64 @@
 export interface CustomerAddress {
-  firstName: string;
-
-  lastName: string;
-
-  company?: string;
-
-  address1: string;
-
-  address2?: string;
-
+  first_name: string;
+  last_name: string;
+  company: string;
+  address_1: string;
+  address_2: string;
   city: string;
-
   state: string;
-
   postcode: string;
-
   country: string;
-
   email?: string;
-
   phone?: string;
 }
 
-export interface UpdateBillingAddressRequest extends CustomerAddress {}
-
-export interface UpdateShippingAddressRequest extends CustomerAddress {}
 export interface Customer {
   id: number;
-
-  email: string;
-
   username: string;
-
-  firstName: string;
-
-  lastName: string;
-
-  displayName: string;
-
+  email: string;
+  first_name: string;
+  last_name: string;
+  display_name: string;
   role: string;
-
-  avatar?: string;
-
-  phone?: string;
-
+  avatar: string;
   billing: CustomerAddress;
-
   shipping: CustomerAddress;
-
-  createdAt: string;
-
-  updatedAt: string;
+  created_at: string | null;
 }
 
-export interface CustomerResponse {
-  customer: Customer;
+export interface UpdateBillingRequest {
+  first_name: string;
+  last_name: string;
+  company?: string;
+  address_1: string;
+  address_2?: string;
+  city: string;
+  state: string;
+  postcode: string;
+  country: string;
+  email: string;
+  phone: string;
+}
+
+export interface UpdateShippingRequest {
+  first_name: string;
+  last_name: string;
+  company?: string;
+  address_1: string;
+  address_2?: string;
+  city: string;
+  state: string;
+  postcode: string;
+  country: string;
 }
 
 export interface UpdateProfileRequest {
-  firstName: string;
-
-  lastName: string;
-
-  displayName: string;
-
+  first_name: string;
+  last_name: string;
+  display_name: string;
   email: string;
-
-  phone?: string;
 }
 
-export interface DashboardSummary {
-  orders: number;
-
-  completedOrders: number;
-
-  processingOrders: number;
-
-  wishlistItems: number;
-
-  reviews: number;
-}
-
-export interface DashboardResponse {
-  summary: DashboardSummary;
+export interface UploadAvatarRequest {
+  avatar: File;
 }

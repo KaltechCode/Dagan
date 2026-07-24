@@ -1,4 +1,4 @@
-import { LoginRequest, RegisterRequest } from "@/types/auths";
+import { LoginRequest, RegisterRequest } from "@/types/auth";
 import { WPUser } from "@/types/user";
 
 export async function login(credentials: LoginRequest): Promise<{

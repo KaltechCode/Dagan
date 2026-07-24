@@ -2,34 +2,34 @@
 
 import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/auth/useAuth";
+
+import { tokenService } from "@/services/token.services";
+import { useAppSelector } from "@/redux/hooks";
+import { selectIsAuthenticated } from "@/redux/features/auth/authSelectors";
 
 interface AuthGuardProps {
   children: ReactNode;
-  fallback?: ReactNode;
   redirectTo?: string;
 }
 
 export default function AuthGuard({
   children,
-  fallback = null,
   redirectTo = "/login",
 }: AuthGuardProps) {
   const router = useRouter();
 
-  const { authenticated, loading, initialized } = useAuth();
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+
+  const hasToken = tokenService.hasAccessToken();
 
   useEffect(() => {
-    if (initialized && !loading && !authenticated) {
+    if (!hasToken && !isAuthenticated) {
       router.replace(redirectTo);
     }
-  }, [authenticated, initialized, loading, redirectTo, router]);
+  }, [hasToken, isAuthenticated, redirectTo, router]);
 
-  if (!initialized || loading) {
-    return fallback;
-  }
-
-  if (!authenticated) {
+  if (!hasToken && !isAuthenticated) {
+    // return <AuthLoading />;
     return null;
   }
 

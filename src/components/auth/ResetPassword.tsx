@@ -1,89 +1,60 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { Button } from "@/components/ui/shared/Button";
-
-import PasswordInput from "./PasswordInput";
-import { useResetPasswordMutation } from "@/redux/api/authApi";
-import { ResetPasswordRequest } from "@/types/auths";
+import type { z } from "zod";
 import { resetPasswordSchema } from "@/schema/auth";
+import { useAuth } from "@/hooks/auth/useAuth";
 
-interface ResetPasswordFormValues {
-  password: string;
-  confirmPassword: string;
-}
+type ResetPasswordFormValues = z.infer<typeof resetPasswordSchema>;
 
 export default function ResetPasswordForm() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const params = useSearchParams();
 
-  const key = searchParams.get("key") ?? "";
-  const login = searchParams.get("login") ?? "";
+  const key = params.get("key") ?? "";
+  const login = params.get("login") ?? "";
 
-  const [resetPassword, { isLoading }] = useResetPasswordMutation();
+  const { resetPassword } = useAuth();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    setError,
+    formState: { errors, isSubmitting },
   } = useForm<ResetPasswordFormValues>({
     resolver: zodResolver(resetPasswordSchema),
-    defaultValues: {
-      password: "",
-      confirmPassword: "",
-    },
   });
 
-  const onSubmit = async (values: ResetPasswordFormValues) => {
-    const payload: ResetPasswordRequest = {
+  async function onSubmit(values: ResetPasswordFormValues) {
+    await resetPassword({
       key,
       login,
       password: values.password,
-    };
-
-    try {
-      await resetPassword(payload).unwrap();
-
-      router.replace("/login");
-    } catch (error) {
-      const message =
-        error && typeof error === "object" && "message" in error
-          ? String(error.message)
-          : "Unable to reset password.";
-
-      setError("root", {
-        message,
-      });
-    }
-  };
+    });
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <PasswordInput
-        label="New Password"
-        autoComplete="new-password"
-        error={errors.password?.message}
-        {...register("password")}
-      />
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      <div>
+        <label>New Password</label>
 
-      <PasswordInput
-        label="Confirm Password"
-        autoComplete="new-password"
-        error={errors.confirmPassword?.message}
-        {...register("confirmPassword")}
-      />
+        <input type="password" {...register("password")} />
 
-      {errors.root && (
-        <p className="text-sm text-red-500">{errors.root.message}</p>
-      )}
+        {errors.password && <p>{errors.password.message}</p>}
+      </div>
 
-      <Button type="submit" loading={isLoading} fullWidth>
+      <div>
+        <label>Confirm Password</label>
+
+        <input type="password" {...register("confirmPassword")} />
+
+        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+      </div>
+
+      <button type="submit" disabled={isSubmitting}>
         Reset Password
-      </Button>
+      </button>
     </form>
   );
 }

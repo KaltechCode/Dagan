@@ -1,121 +1,64 @@
-import { API } from "@/libs/api/endpoints";
+import { customerService } from "@/services/customer.services";
+
 import type {
-  CustomerResponse,
-  DashboardResponse,
-  UpdateBillingAddressRequest,
+  Customer,
+  UpdateBillingRequest,
   UpdateProfileRequest,
-  UpdateShippingAddressRequest,
-} from "../../types/customer";
+  UpdateShippingRequest,
+  UploadAvatarRequest,
+} from "@/types/customer";
+import { executeQuery } from "@/libs/api/helper";
 import { baseApi } from "./baseApi";
 
 export const customerApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     /**
-     * Customer
+     * Current authenticated customer
      */
-
-    getCustomer: builder.query<CustomerResponse, void>({
-      query: () => ({
-        url: API.CUSTOMER,
-      }),
+    getProfile: builder.query<Customer, void>({
+      queryFn: () => executeQuery(() => customerService.profile()),
 
       providesTags: ["Customer"],
     }),
 
     /**
-     * Dashboard
+     * Update profile
      */
+    updateProfile: builder.mutation<Customer, UpdateProfileRequest>({
+      queryFn: (body) =>
+        executeQuery(() => customerService.updateProfile(body)),
 
-    getDashboard: builder.query<DashboardResponse, void>({
-      query: () => ({
-        url: `${API.CUSTOMER}/dashboard`,
-      }),
-
-      providesTags: ["Customer"],
+      invalidatesTags: (_result, _error) => ["Customer"],
     }),
 
     /**
-     * Update Profile
+     * Update billing address
      */
+    updateBilling: builder.mutation<Customer, UpdateBillingRequest>({
+      queryFn: (body) =>
+        executeQuery(() => customerService.updateBilling(body)),
 
-    updateProfile: builder.mutation<CustomerResponse, UpdateProfileRequest>({
-      query: (body) => ({
-        url: API.CUSTOMER_PROFILE,
-
-        method: "PUT",
-
-        body,
-      }),
-
-      invalidatesTags: ["Customer"],
+      invalidatesTags: (_result, _error) => ["Customer"],
     }),
 
     /**
-     * Billing Address
+     * Update shipping address
      */
+    updateShipping: builder.mutation<Customer, UpdateShippingRequest>({
+      queryFn: (body) =>
+        executeQuery(() => customerService.updateShipping(body)),
 
-    updateBilling: builder.mutation<
-      CustomerResponse,
-      UpdateBillingAddressRequest
-    >({
-      query: (body) => ({
-        url: API.CUSTOMER_BILLING,
-
-        method: "PUT",
-
-        body,
-      }),
-
-      invalidatesTags: ["Customer"],
+      invalidatesTags: (_result, _error) => ["Customer"],
     }),
 
     /**
-     * Shipping Address
+     * Upload avatar
      */
+    uploadAvatar: builder.mutation<Customer, UploadAvatarRequest>({
+      queryFn: (body) =>
+        executeQuery(() => customerService.uploadAvatar(body.avatar)),
 
-    updateShipping: builder.mutation<
-      CustomerResponse,
-      UpdateShippingAddressRequest
-    >({
-      query: (body) => ({
-        url: API.CUSTOMER_SHIPPING,
-
-        method: "PUT",
-
-        body,
-      }),
-
-      invalidatesTags: ["Customer"],
-    }),
-
-    /**
-     * Upload Avatar
-     */
-
-    uploadAvatar: builder.mutation<CustomerResponse, FormData>({
-      query: (body) => ({
-        url: API.CUSTOMER_AVATAR,
-
-        method: "POST",
-
-        body,
-      }),
-
-      invalidatesTags: ["Customer"],
-    }),
-
-    /**
-     * Delete Avatar
-     */
-
-    deleteAvatar: builder.mutation<CustomerResponse, void>({
-      query: () => ({
-        url: API.CUSTOMER_AVATAR,
-
-        method: "DELETE",
-      }),
-
-      invalidatesTags: ["Customer"],
+      invalidatesTags: (_result, _error) => ["Customer"],
     }),
   }),
 
@@ -123,19 +66,11 @@ export const customerApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useGetCustomerQuery,
-
-  useLazyGetCustomerQuery,
-
-  useGetDashboardQuery,
+  useGetProfileQuery,
+  useLazyGetProfileQuery,
 
   useUpdateProfileMutation,
-
   useUpdateBillingMutation,
-
   useUpdateShippingMutation,
-
   useUploadAvatarMutation,
-
-  useDeleteAvatarMutation,
 } = customerApi;

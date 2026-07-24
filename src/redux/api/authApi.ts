@@ -1,30 +1,21 @@
 import { API } from "@/libs/api/endpoints";
+import { baseApi } from "./baseApi";
+
 import type {
   AuthResponse,
-  ForgotPasswordRequest,
-  LoginRequest,
   RegisterRequest,
+  LoginRequest,
+  ForgotPasswordRequest,
   ResetPasswordRequest,
-  UpdatePasswordRequest,
-  UpdateProfileRequest,
-} from "../../types/auths";
-import { baseApi } from "./baseApi";
+  ChangePasswordRequest,
+  LogoutRequest,
+} from "@/types/auth";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<AuthResponse, LoginRequest>({
-      query: (body) => ({
-        url: API.LOGIN,
-        method: "POST",
-        body,
-      }),
-
-      invalidatesTags: ["Customer"],
-    }),
-
     register: builder.mutation<AuthResponse, RegisterRequest>({
       query: (body) => ({
-        url: API.REGISTER,
+        url: API.AUTH.REGISTER,
         method: "POST",
         body,
       }),
@@ -32,44 +23,36 @@ export const authApi = baseApi.injectEndpoints({
       invalidatesTags: ["Customer"],
     }),
 
-    logout: builder.mutation<void, void>({
-      query: () => ({
-        url: API.LOGOUT,
-        method: "POST",
-      }),
-
-      invalidatesTags: ["Customer", "Cart", "Wishlist", "Orders"],
-    }),
-
-    me: builder.query<AuthResponse, void>({
-      query: () => ({
-        url: API.ME,
-      }),
-
-      providesTags: ["Customer"],
-    }),
-
-    updateProfile: builder.mutation<AuthResponse, UpdateProfileRequest>({
+    login: builder.mutation<AuthResponse, LoginRequest>({
       query: (body) => ({
-        url: API.PROFILE,
-        method: "PUT",
+        url: API.AUTH.LOGIN,
+        method: "POST",
         body,
       }),
 
       invalidatesTags: ["Customer"],
     }),
 
-    updatePassword: builder.mutation<void, UpdatePasswordRequest>({
+    logout: builder.mutation<void, LogoutRequest>({
       query: (body) => ({
-        url: API.PASSWORD,
-        method: "PUT",
+        url: API.AUTH.LOGOUT,
+        method: "POST",
         body,
+      }),
+
+      invalidatesTags: ["Customer"],
+    }),
+
+    refresh: builder.mutation<AuthResponse, void>({
+      query: () => ({
+        url: API.AUTH.REFRESH,
+        method: "POST",
       }),
     }),
 
     forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
       query: (body) => ({
-        url: API.FORGOT_PASSWORD,
+        url: API.AUTH.FORGOT_PASSWORD,
         method: "POST",
         body,
       }),
@@ -77,38 +60,36 @@ export const authApi = baseApi.injectEndpoints({
 
     resetPassword: builder.mutation<void, ResetPasswordRequest>({
       query: (body) => ({
-        url: API.RESET_PASSWORD,
+        url: API.AUTH.RESET_PASSWORD,
         method: "POST",
         body,
       }),
     }),
 
-    refreshSession: builder.mutation<AuthResponse, void>({
-      query: () => ({
-        url: API.REFRESH_TOKEN,
+    changePassword: builder.mutation<void, ChangePasswordRequest>({
+      query: (body) => ({
+        url: API.AUTH.CHANGE_PASSWORD,
         method: "POST",
+        body,
       }),
 
       invalidatesTags: ["Customer"],
     }),
   }),
-
-  overrideExisting: false,
 });
 
 export const {
-  useLoginMutation,
   useRegisterMutation,
+
+  useLoginMutation,
+
   useLogoutMutation,
 
-  useMeQuery,
-  useLazyMeQuery,
-
-  useUpdateProfileMutation,
-  useUpdatePasswordMutation,
+  useRefreshMutation,
 
   useForgotPasswordMutation,
+
   useResetPasswordMutation,
 
-  useRefreshSessionMutation,
+  useChangePasswordMutation,
 } = authApi;

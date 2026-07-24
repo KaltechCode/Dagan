@@ -1,24 +1,80 @@
 "use client";
 
-import { useGetCustomerQuery } from "@/redux/api/customerApi";
-import { useMemo } from "react";
+import { useCallback } from "react";
+
+import {
+  useGetProfileQuery,
+  useUpdateProfileMutation,
+  useUpdateBillingMutation,
+  useUpdateShippingMutation,
+  useUploadAvatarMutation,
+} from "@/redux/api/customerApi";
+
+import type {
+  UpdateBillingRequest,
+  UpdateProfileRequest,
+  UpdateShippingRequest,
+} from "@/types/customer";
 
 export function useCustomer() {
-  const { data, isLoading, isFetching, isError, refetch } =
-    useGetCustomerQuery();
+  const {
+    data: customer,
+    isLoading,
+    isFetching,
+    error,
+    refetch,
+  } = useGetProfileQuery();
 
-  return useMemo(
-    () => ({
-      customer: data?.customer ?? null,
+  const [updateProfileMutation] = useUpdateProfileMutation();
 
-      loading: isLoading || isFetching,
+  const [updateBillingMutation] = useUpdateBillingMutation();
 
-      initialized: !isLoading,
+  const [updateShippingMutation] = useUpdateShippingMutation();
 
-      error: isError,
+  const [uploadAvatarMutation] = useUploadAvatarMutation();
 
-      refetch,
-    }),
-    [data, isLoading, isFetching, isError, refetch],
+  const updateProfile = useCallback(
+    async (payload: UpdateProfileRequest) => {
+      return updateProfileMutation(payload).unwrap();
+    },
+    [updateProfileMutation],
   );
+
+  const updateBilling = useCallback(
+    async (payload: UpdateBillingRequest) => {
+      return updateBillingMutation(payload).unwrap();
+    },
+    [updateBillingMutation],
+  );
+
+  const updateShipping = useCallback(
+    async (payload: UpdateShippingRequest) => {
+      return updateShippingMutation(payload).unwrap();
+    },
+    [updateShippingMutation],
+  );
+
+  const uploadAvatar = useCallback(
+    async (file: File) => {
+      return uploadAvatarMutation({
+        avatar: file,
+      }).unwrap();
+    },
+    [uploadAvatarMutation],
+  );
+
+  return {
+    customer,
+
+    isLoading,
+    isFetching,
+    error,
+
+    refetch,
+
+    updateProfile,
+    updateBilling,
+    updateShipping,
+    uploadAvatar,
+  };
 }
