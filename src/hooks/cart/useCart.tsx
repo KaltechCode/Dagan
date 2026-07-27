@@ -7,7 +7,7 @@ import {
   useRemoveCartItemMutation,
   useRemoveCouponMutation,
   useUpdateCartItemMutation,
-  useUpdateShippingMutation,
+  useUpdateShippingMethodMutation,
 } from "@/redux/api/cartApi";
 
 export function useCart() {
@@ -23,7 +23,7 @@ export function useCart() {
 
   const [removeCoupon, removeCouponState] = useRemoveCouponMutation();
 
-  const [updateShipping, shippingState] = useUpdateShippingMutation();
+  const [updateShipping, shippingState] = useUpdateShippingMethodMutation();
 
   async function add(
     productId: number,

@@ -1,69 +1,3 @@
-// import { API } from "@/libs/api/endpoints";
-// import type {
-//   AddToCartRequest,
-//   ApplyCouponRequest,
-//   Cart,
-//   CartResponse,
-//   RemoveCartItemRequest,
-//   UpdateCartItemRequest,
-//   UpdateShippingRequest,
-// } from "../../types/cart";
-// import { baseApi } from "./baseApi";
-
-// export const cartApi = baseApi.injectEndpoints({
-//   endpoints: (builder) => ({
-//     getCart: builder.query<Cart, void>({
-//       query: () => ({
-//         url: API.CART,
-//       }),
-
-//       providesTags: ["Cart"],
-//     }),
-
-//     addToCart: builder.mutation<Cart, AddToCartRequest>({
-//       query: (body) => ({
-//         url: API.CART_ITEMS,
-//         method: "POST",
-//         body,
-//       }),
-
-//       invalidatesTags: ["Cart"],
-//     }),
-
-//     updateCartItem: builder.mutation<Cart, { key: string; quantity: number }>({
-//       query: ({ key, quantity }) => ({
-//         url: `${API.CART_ITEMS}/${key}`,
-//         method: "PATCH",
-//         body: { quantity },
-//       }),
-
-//       invalidatesTags: ["Cart"],
-//     }),
-
-//     removeCartItem: builder.mutation<Cart, string>({
-//       query: (key) => ({
-//         url: `${API.CART_ITEMS}/${key}`,
-//         method: "DELETE",
-//       }),
-
-//       invalidatesTags: ["Cart"],
-//     }),
-//   }),
-
-//   overrideExisting: false,
-// });
-
-// export const {
-//   useGetCartQuery,
-//   useLazyGetCartQuery,
-
-//   useAddToCartMutation,
-
-//   useUpdateCartItemMutation,
-
-//   useRemoveCartItemMutation,
-// } = cartApi;
-
 import {
   AddCartItemRequest,
   ApplyCouponRequest,
@@ -125,16 +59,16 @@ export const cartApi = baseApi.injectEndpoints({
       invalidatesTags: ["Cart"],
     }),
 
-    updateShipping: builder.mutation<Cart, ShippingMethodRequest>({
+    updateShippingMethod: builder.mutation<Cart, ShippingMethodRequest>({
       async queryFn(body) {
-        return executeQuery(() => cartService.updateShipping(body));
+        return executeQuery(() => cartService.updateShippingMethod(body));
       },
 
       invalidatesTags: ["Cart"],
     }),
   }),
 
-  overrideExisting: false,
+  overrideExisting: true,
 });
 
 export const {
@@ -144,5 +78,5 @@ export const {
   useRemoveCartItemMutation,
   useApplyCouponMutation,
   useRemoveCouponMutation,
-  useUpdateShippingMutation,
+  useUpdateShippingMethodMutation,
 } = cartApi;

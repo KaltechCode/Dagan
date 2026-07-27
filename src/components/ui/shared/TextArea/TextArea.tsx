@@ -14,7 +14,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       <FieldTwo
         label={label || ""}
         description={description}
-        error={error}
+        error={error?.message}
         required={required}
       >
         <textarea

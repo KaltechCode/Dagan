@@ -13,9 +13,9 @@ import FourColumns from "../layout/section/FourColumns";
 import WhyIconsCarousel from "../layout/section/WhyIconsCarousel";
 import FourItemItem from "../Box/FourItemItem";
 import FourItemBox from "../Box/FourItemBox";
-import { useCategory } from "@/hooks/category/useCategory";
-import { useGetProductsQuery } from "@/redux/api/productApi";
-import CategoryProductSection from "../layout/section/CategoryProductsSection";
+import { selectIsAuthenticated } from "@/redux/features/auth/authSelectors";
+import { useAppSelector } from "@/redux/hooks";
+import { tokenService } from "@/services/token.services";
 
 interface HomePageProps {
   hero: HeroSectionData;

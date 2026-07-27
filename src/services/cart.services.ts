@@ -75,7 +75,7 @@ class CartService {
     return wooCommerceClient.delete<Cart>(`${API.CART_COUPONS}/${code}`);
   }
 
-  async updateShipping(body: ShippingMethodRequest): Promise<Cart> {
+  async updateShippingMethod(body: ShippingMethodRequest): Promise<Cart> {
     return wooCommerceClient.post<Cart>(API.CART_SHIPPING, body);
   }
 }

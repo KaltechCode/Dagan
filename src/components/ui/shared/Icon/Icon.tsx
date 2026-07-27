@@ -5,6 +5,7 @@ import { LucideProps } from "lucide-react";
 import { icons } from "@/assets/icons";
 
 import {
+  DashboardIconName,
   ecommerceReactIconsTypes,
   IconName,
   SocialIconName,
@@ -13,10 +14,13 @@ import { IconBaseProps, IconType } from "react-icons/lib";
 import { socialIcons } from "@/assets/icons/social";
 import Link from "next/link";
 import { ecommerceReactIcons } from "@/assets/icons/ecommerce";
+import { dashboardIcons } from "@/assets/icons/dashboard";
 
 interface Props extends LucideProps {
   name: IconName;
 }
+
+// icon (lucide)
 
 export function Icon({ name, ...props }: Props) {
   const Component = icons[name];
@@ -29,6 +33,8 @@ interface Prop extends IconBaseProps {
   link: string;
 }
 
+// social Icon
+
 export function SocialIcon({ name, link, ...props }: Prop) {
   const Component: IconType = socialIcons[name];
 
@@ -38,6 +44,19 @@ export function SocialIcon({ name, link, ...props }: Prop) {
     </Link>
   );
 }
+
+interface DProp extends IconBaseProps {
+  name: DashboardIconName;
+}
+// dashboard Icon
+
+export function DashboardIcon({ name, ...props }: DProp) {
+  const Component: IconType = dashboardIcons[name];
+
+  return <Component {...props} />;
+}
+
+// why Icon
 
 interface WhyPros extends IconBaseProps {
   name: ecommerceReactIconsTypes;

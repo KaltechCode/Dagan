@@ -9,7 +9,13 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "site16988-71cwo1.scloudsite101.com",
         port: "",
-        pathname: "/wp-content/uploads/**", // Use '**' to match all paths on this host
+        pathname: "/wp-content/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "secure.gravatar.com",
+        port: "",
+        pathname: "/avatar/*",
       },
     ],
   },

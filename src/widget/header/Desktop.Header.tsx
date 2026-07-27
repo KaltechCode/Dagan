@@ -14,7 +14,7 @@ export default function DesktopHeader() {
         <HeaderSearch />
         <HeaderActions />
       </div>
-      <div className="relative z-50 border-b border-gray-200 bg-white">
+      <div className="relative z-50 border-b border-gray-200 bg-white hello">
         <Navbar />
       </div>
     </header>

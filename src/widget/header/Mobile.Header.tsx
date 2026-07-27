@@ -23,9 +23,9 @@ export default function MobileHeader() {
 
           <HeaderCart />
 
-          <div className="relative z-50 w-full border-b border-gray-200 bg-white">
+          {/* <div className="relative z-50 w-full border-b border-gray-200 bg-white">
             <Navbar />
-          </div>
+          </div> */}
         </div>
       </div>
     </header>

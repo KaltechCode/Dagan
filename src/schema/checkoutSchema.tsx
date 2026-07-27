@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { addressSchema } from "./customer";
+import { addressSchema } from "./addressSchema";
 
 export const checkoutSchema = z.object({
   billing: addressSchema,

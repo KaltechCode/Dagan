@@ -27,40 +27,40 @@ export default function CheckoutForm() {
         <h2 className="mb-6 text-xl font-semibold">Billing Details</h2>
 
         <div className="grid gap-5 md:grid-cols-2">
-          <Field label="First Name" error={errors.billing?.firstName}>
+          <Field label="First Name" error={errors.billing?.firstName?.message}>
             <input {...register("billing.firstName")} />
           </Field>
 
-          <Field label="Last Name" error={errors.billing?.lastName}>
+          <Field label="Last Name" error={errors.billing?.lastName?.message}>
             <input {...register("billing.lastName")} />
           </Field>
 
-          <Field label="Email" error={errors.billing?.email}>
+          <Field label="Email" error={errors.billing?.email?.message}>
             <input type="email" {...register("billing.email")} />
           </Field>
 
-          <Field label="Phone" error={errors.billing?.phone}>
+          <Field label="Phone" error={errors.billing?.phone?.message}>
             <input {...register("billing.phone")} />
           </Field>
 
-          <Field label="Country" error={errors.billing?.country}>
+          <Field label="Country" error={errors.billing?.country?.message}>
             <input {...register("billing.country")} />
           </Field>
 
-          <Field label="State" error={errors.billing?.state}>
+          <Field label="State" error={errors.billing?.state?.message}>
             <input {...register("billing.state")} />
           </Field>
 
-          <Field label="City" error={errors.billing?.city}>
+          <Field label="City" error={errors.billing?.city?.message}>
             <input {...register("billing.city")} />
           </Field>
 
-          <Field label="Postcode" error={errors.billing?.postcode}>
+          <Field label="Postcode" error={errors.billing?.postcode?.message}>
             <input {...register("billing.postcode")} />
           </Field>
         </div>
 
-        <Field label="Address" error={errors.billing?.address1}>
+        <Field label="Address" error={errors.billing?.address1?.message}>
           <input {...register("billing.address1")} />
         </Field>
       </section>

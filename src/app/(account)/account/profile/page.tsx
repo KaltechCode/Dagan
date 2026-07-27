@@ -6,11 +6,7 @@ import Header from "@/widget/header/Header";
 export default function Page() {
   return (
     <div className="bg-white">
-      <Header />
-      <AuthGuard>
-        <ProfileForm />
-      </AuthGuard>
-      <Footer />
+      <ProfileForm />
     </div>
   );
 }

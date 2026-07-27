@@ -4,7 +4,7 @@ import OrderList from "@/components/order/OrderList";
 
 export default function OrdersPage() {
   return (
-    <main className="container mx-auto max-w-7xl py-8">
+    <main className="mx-auto  border border-gray-200 px-5 py-5 rounded-md">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">My Orders</h1>
 

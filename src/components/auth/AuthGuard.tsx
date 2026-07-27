@@ -23,6 +23,12 @@ export default function AuthGuard({
   const hasToken = tokenService.hasAccessToken();
 
   useEffect(() => {
+    console.log("AuthGuard effect", {
+      hasToken,
+      isAuthenticated,
+    });
+    console.log("AuthGuard redirecting");
+
     if (!hasToken && !isAuthenticated) {
       router.replace(redirectTo);
     }

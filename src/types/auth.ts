@@ -29,13 +29,9 @@ export interface ChangePasswordRequest {
 }
 
 export interface AuthResponse {
-  success: boolean;
-  message: string;
-  data: {
-    customer: Customer;
-    access_token?: string;
-    refresh_token?: string;
-  };
+  customer: Customer;
+  access_token: string;
+  refresh_token: string;
 }
 
 export interface LogoutRequest {

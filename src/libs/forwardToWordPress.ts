@@ -11,65 +11,93 @@ export async function forwardToWordPress(
       {
         success: false,
         message: "WORDPRESS_API_URL is not configured.",
-        data: null,
       },
       { status: 500 },
     );
   }
 
-  const upstreamUrl = new URL(
-    pathSegments.length ? pathSegments.join("/") : "",
-    `${baseUrl}/`,
-  );
+  const upstreamUrl = new URL(pathSegments.join("/"), `${baseUrl}/`);
 
+  // Forward query parameters
   request.nextUrl.searchParams.forEach((value, key) => {
     upstreamUrl.searchParams.set(key, value);
   });
 
-  const headers = new Headers(request.headers);
-  headers.delete("host");
-  headers.delete("content-length");
+  // Forward request headers
+  const headers = new Headers();
 
-  const method = request.method;
-  const body =
-    method !== "GET" && method !== "HEAD" ? await request.text() : undefined;
+  request.headers.forEach((value, key) => {
+    switch (key.toLowerCase()) {
+      case "host":
+      case "content-length":
+      case "accept-encoding":
+        // Let fetch negotiate compression itself
+        break;
 
-  const response = await fetch(upstreamUrl, {
-    method,
-    headers,
-    body,
-    cache: "no-store",
+      default:
+        headers.set(key, value);
+    }
   });
 
-  const contentType = response.headers.get("content-type") ?? "";
-  const payload = contentType.includes("application/json")
-    ? await response.json()
-    : await response.text();
+  // Read request body only for methods that support it
+  let body: string | undefined;
 
-  const forwardedHeaders = new Headers();
+  if (request.method !== "GET" && request.method !== "HEAD") {
+    body = await request.text();
+  }
+
+  let response: Response;
+
+  try {
+    response = await fetch(upstreamUrl.toString(), {
+      method: request.method,
+      headers,
+      body,
+      redirect: "manual",
+      cache: "no-store",
+    });
+  } catch (error) {
+    console.error("WordPress fetch failed:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Unable to connect to WordPress.",
+      },
+      {
+        status: 502,
+      },
+    );
+  }
+
+  // Read body ONCE
+  const responseBody = await response.text();
+
+  // console.log("========== WORDPRESS RESPONSE ==========");
+  // console.log("URL:", upstreamUrl.toString());
+  // console.log("Status:", response.status);
+  // console.log("Body:", responseBody);
+  // console.log("========================================");
+
+  // Copy response headers except problematic ones
+  const responseHeaders = new Headers();
 
   response.headers.forEach((value, key) => {
-    if (key.toLowerCase() === "content-length") {
-      return;
-    }
+    switch (key.toLowerCase()) {
+      case "content-length":
+      case "content-encoding":
+      case "transfer-encoding":
+      case "connection":
+      case "keep-alive":
+        break;
 
-    if (key.toLowerCase() === "set-cookie") {
-      forwardedHeaders.append(key, value);
-      return;
+      default:
+        responseHeaders.set(key, value);
     }
-
-    forwardedHeaders.set(key, value);
   });
 
-  return NextResponse.json(
-    {
-      success: response.ok,
-      message: response.statusText,
-      data: payload,
-    },
-    {
-      status: response.status,
-      headers: forwardedHeaders,
-    },
-  );
+  return new NextResponse(responseBody, {
+    status: response.status,
+    headers: responseHeaders,
+  });
 }

@@ -8,6 +8,5 @@ import MobileHeader from "./Mobile.Header";
 
 export default function Header() {
   const { isDesktop } = useViewport();
-
   return isDesktop ? <DesktopHeader /> : <MobileHeader />;
 }

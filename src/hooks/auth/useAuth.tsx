@@ -53,7 +53,7 @@ export function useAuth() {
     async (payload: RegisterRequest) => {
       const response = await registerMutation(payload).unwrap();
 
-      const { customer, access_token, refresh_token } = response.data;
+      const { customer, access_token, refresh_token } = response;
 
       if (access_token && refresh_token) {
         tokenService.setTokens(access_token, refresh_token);
@@ -70,7 +70,7 @@ export function useAuth() {
     async (payload: LoginRequest) => {
       const response = await loginMutation(payload).unwrap();
 
-      const { customer, access_token, refresh_token } = response.data;
+      const { customer, access_token, refresh_token } = response;
 
       if (access_token && refresh_token) {
         tokenService.setTokens(access_token, refresh_token);
@@ -100,7 +100,7 @@ export function useAuth() {
   const refresh = useCallback(async () => {
     const response = await refreshMutation().unwrap();
 
-    const { customer, access_token, refresh_token } = response.data;
+    const { customer, access_token, refresh_token } = response;
 
     if (access_token && refresh_token) {
       tokenService.setTokens(access_token, refresh_token);

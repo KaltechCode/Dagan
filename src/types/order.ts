@@ -33,6 +33,11 @@ export interface OrderNote {
   customer_note: boolean;
 }
 
+export interface StatusDefinition {
+  label: string;
+  className: string;
+}
+
 export type OrderStatus =
   | "pending"
   | "processing"

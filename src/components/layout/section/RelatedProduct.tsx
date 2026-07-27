@@ -11,13 +11,9 @@ interface Props {
 }
 
 export default function RelatedProducts({ product }: Props) {
-  const { products } = useRelatedProducts(
-    product.categories.map((category) => category.id),
-    product.id,
-    product.slug,
-  );
+  const { relatedProducts } = useRelatedProducts(product.slug);
 
-  if (!products.length) {
+  if (!relatedProducts.length) {
     return null;
   }
 
@@ -25,7 +21,7 @@ export default function RelatedProducts({ product }: Props) {
     <Section>
       <SectionHeader title="Related Products" />
 
-      <ProductCarousel products={products} />
+      <ProductCarousel products={relatedProducts} />
     </Section>
   );
 }

@@ -15,14 +15,14 @@ export default function BillingAddress({ address }: BillingAddressProps) {
 
       <div className="space-y-2 text-sm">
         <p>
-          {address.firstName} {address.lastName}
+          {address.first_name} {address.last_name}
         </p>
 
         {address.company && <p>{address.company}</p>}
 
-        <p>{address.address1}</p>
+        <p>{address.address_1}</p>
 
-        {address.address2 && <p>{address.address2}</p>}
+        {address.address_2 && <p>{address.address_2}</p>}
 
         <p>
           {address.city}, {address.state}
