@@ -12,6 +12,10 @@ const navigation = [
     href: "/",
   },
   {
+    label: "About Us",
+    href: "/about-us",
+  },
+  {
     label: "Shop",
     href: "/shop",
   },
@@ -21,14 +25,19 @@ const navigation = [
   },
 
   {
-    label: "Sales",
+    label: "Fashion",
     href: "/sales",
   },
 
   {
-    label: "Deals",
-    href: "/deals",
+    label: "Sales",
+    href: "/sales",
   },
+
+  // {
+  //   label: "Deals",
+  //   href: "/deals",
+  // },
   {
     label: "New Arrivals",
     href: "/new-arrivals",

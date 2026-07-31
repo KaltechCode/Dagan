@@ -23,7 +23,7 @@ export default function NavItem({ item }: Props) {
         aria-current={active ? "page" : undefined}
         className={clsx(
           "relative flex h-14 items-center px-5 lg:px-4 text-sm font-semibold uppercase tracking-wide transition-colors duration-200",
-          active ? "text-[#7CB518]" : "text-gray-900 hover:text-[#7CB518]",
+          active ? "text-[#7CB518]" : "text-white hover:text-[#7CB518]",
         )}
       >
         {item.label}

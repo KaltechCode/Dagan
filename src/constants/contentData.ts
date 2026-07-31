@@ -327,7 +327,7 @@ export const trendingData: ITrending[] = [
 export const heroSectionData: HeroSectionData = {
   id: 1,
 
-  title: "The Online Grocery Store",
+  title: "Dagan African Market",
 
   image: ["/images/banners/hero.png"],
 

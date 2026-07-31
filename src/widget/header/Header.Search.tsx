@@ -11,7 +11,7 @@ interface HeaderSearchProps {
 
 export default function HeaderSearch({ btn = false }: HeaderSearchProps) {
   return (
-    <div className=" hidden md:flex items-center lg:justify-center flex-1 rounded-full bg-bg-sdy border-none overflow-hidden px-3 lg:px-7 max-w-[800px]">
+    <div className=" hidden md:flex items-center lg:justify-center flex-1 rounded-full bg-bg-sdy border border-bg-pry overflow-hidden px-3 lg:px-7 max-w-[800px]">
       <Icon name="search" size={20} className="text-gray-400" />
       <input
         placeholder="Search products..."

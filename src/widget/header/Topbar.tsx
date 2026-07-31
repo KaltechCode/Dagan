@@ -3,8 +3,11 @@ import React from "react";
 
 function Topbar() {
   return (
-    <div className="w-full bg-bg-pry hidden xmd:flex justify-between md:grid grid-cols-5 items-center py-3  px-2  sm:px-5">
-      <p className="sm-text sm:p-text text-white uppercase md:text-right  md:col-span-3">
+    <div className="w-full bg-bg-pry hidden md:flex justify-between lg:grid grid-cols-7 items-center py-3  px-2  sm:px-5">
+      <p className="sm-text sm:p-text sm:p-text text-white uppercase md:text-left  md:col-span-3 hidden lg:block lg:col-span-2">
+        <span>Hotline:</span> +1 (931) 302 0787
+      </p>
+      <p className="sm-text sm:p-text text-white uppercase md:text-center  md:col-span-3">
         New customers save 10% with the code GET 10
       </p>
 

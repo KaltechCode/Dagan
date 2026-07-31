@@ -52,7 +52,7 @@ export default function CategoriesDropdown() {
     >
       <button
         onClick={() => setOpen((value) => !value)}
-        className="flex h-14 text-primary items-center justify-between px-6 text-sm font-semibold uppercase tracking-wide gap-2 transition hover:bg-bg-sdy"
+        className="flex h-14 text-white items-center justify-between px-6 text-sm font-semibold uppercase tracking-wide gap-2 transition"
       >
         All Categories
         <ChevronDown

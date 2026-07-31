@@ -14,7 +14,7 @@ export const buttonVariants = cva(
     "focus:ring-offset-2",
     "disabled:pointer-events-none",
     "disabled:opacity-50",
-    "outline-none",
+    "outline-none rounded-full!",
   ],
 
   {
