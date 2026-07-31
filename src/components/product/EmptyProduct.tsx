@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/shared/Button";
 
 export default function EmptyProducts() {
   return (
-    <div className="py-20 text-center">
+    <div className="py-20 text-center ">
       <h2 className="text-2xl font-semibold">No Products Found</h2>
 
       <p className="mt-3 text-gray-500">

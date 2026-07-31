@@ -55,6 +55,7 @@
 
 import { ButtonHTMLAttributes } from "react";
 import { useCart } from "@/hooks/cart/useCart";
+import { Icon } from "@/components/ui/shared/Icon/Icon";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   productId: number;
@@ -64,6 +65,8 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variationId?: number;
 
   attributes?: Record<string, string>;
+
+  cartLabel?: boolean;
 
   onSuccess?: () => void;
 
@@ -81,6 +84,7 @@ export default function AddToCartButton({
   onError,
   children = "Add to Cart",
   disabled,
+  cartLabel,
   ...props
 }: Props) {
   const { addItem, add, isAdding } = useCart();
@@ -110,7 +114,13 @@ export default function AddToCartButton({
       onClick={handleAddToCart}
       className="bg-bg-pry text-white text-center px-6 py-3 rounded-sm cursor-pointer"
     >
-      {isAdding ? "Adding..." : children}
+      {isAdding ? (
+        "Adding..."
+      ) : cartLabel ? (
+        <Icon name="cart" className="text-white" size={24} />
+      ) : (
+        children
+      )}
     </button>
   );
 }

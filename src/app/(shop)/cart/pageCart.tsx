@@ -31,9 +31,12 @@ export default function CartPage() {
   }
 
   return (
-    <section className="w-[95%] xl:w-[90%] mx-auto py-10 bg-white">
-      <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
-        <div className="space-y-5">
+    <section className="w-[95%] xl:w-[90%] mx-auto py-5 bg-white">
+      <h2 className="section-title text-secondary mb-2 pb-2 md:pt-7">
+        Your Cart
+      </h2>
+      <div className="grid gap-10 md:grid-cols-5 md:py-7 lg:py-10 xl:py-12 lg:gap-16 xl:gap-18 2xl:gap-24 3k:gap-26">
+        <div className="space-y-5 md:col-span-3 border border-gray-200 p-4 rounded-md lg:p-7">
           {cart?.items?.map((item) => (
             <CartItem
               key={item.key}
@@ -53,22 +56,24 @@ export default function CartPage() {
           ))}
         </div>
 
-        <aside className="rounded-lg border p-6">
+        <aside className="rounded-lg border border-gray-200 p-6 md:col-span-2">
           <CartSummary totals={cart.totals} />
 
-          <Link
-            href="/checkout"
-            className="mt-6 block rounded bg-bg-pry px-6 py-4 text-center text-white"
-          >
-            Proceed to Checkout
-          </Link>
+          <div className="px-2 md:px-2">
+            <Link
+              href="/checkout"
+              className="mt-6 block rounded bg-bg-pry px-6 py-4 text-center text-white rounded-full hover:bg-transparent hover:text-secondary transition-all duration-150"
+            >
+              Proceed to Checkout
+            </Link>
 
-          <Link
-            href="/shop"
-            className="mt-3 block rounded border px-6 py-4 text-center"
-          >
-            Continue Shopping
-          </Link>
+            <Link
+              href="/shop"
+              className="mt-3 block  border border-gray-200 px-6 py-4 text-center rounded-full hover:bg-bg-pry hover:text-white transition-all duration-150"
+            >
+              Continue Shopping
+            </Link>
+          </div>
         </aside>
       </div>
     </section>

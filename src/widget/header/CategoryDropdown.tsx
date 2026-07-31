@@ -39,6 +39,10 @@ export default function CategoriesDropdown() {
     };
   }, []);
 
+  const ParentCategories = categories.filter((item) => item.parentId == 0);
+
+  const childCategories = (id: number) =>
+    categories.filter((item) => item.parentId == id);
   return (
     <div
       ref={ref}
@@ -48,7 +52,7 @@ export default function CategoriesDropdown() {
     >
       <button
         onClick={() => setOpen((value) => !value)}
-        className="flex h-14 min-w-[230px] items-center justify-between bg-[#00552F] px-6 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-[#006b3b]"
+        className="flex h-14 text-primary items-center justify-between px-6 text-sm font-semibold uppercase tracking-wide gap-2 transition hover:bg-bg-sdy"
       >
         All Categories
         <ChevronDown
@@ -59,21 +63,32 @@ export default function CategoriesDropdown() {
       </button>
 
       <div
-        className={`absolute left-0 top-full z-50 mt-1 w-full overflow-hidden rounded-md border border-gray-200 bg-white shadow-xl transition-all duration-300 ${
+        className={`absolute left-0 top-full z-50 mt-1 w-200 overflow-hidden rounded-md border border-gray-200 bg-white shadow-xl transition-all duration-300 ${
           open
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-2 opacity-0"
         }`}
       >
-        <ul className="max-h-[450px] overflow-y-auto py-2">
-          {categories.map((category) => (
+        <ul className="max-h-[450px] overflow-y-auto py-2 grid  grid-cols-4 gap-7">
+          {ParentCategories.map((category) => (
             <li key={category.id}>
               <Link
                 href={`/category/${category.slug}`}
-                className="flex items-center justify-between px-5 py-3 text-sm text-gray-700 transition hover:bg-[#F3F8F5] hover:text-[#00552F]"
+                className="flex items-center justify-between px-5 py-3 text-sm font-bold text-gray-700 transition hover:bg-[#F3F8F5] hover:text-[#00552F]"
               >
                 {category.name}
               </Link>
+
+              <ul>
+                {childCategories(category.id).map((item) => (
+                  <Link
+                    href={`/category/${item.slug}`}
+                    className="flex items-center justify-between px-5 py-3 text-sm font-bold text-gray-700 transition hover:bg-[#F3F8F5] hover:text-[#00552F]"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>

@@ -143,7 +143,7 @@ export default function CartItem({
   }
 
   return (
-    <div className="flex gap-4 border-b py-4 bg-white">
+    <div className="flex gap-4 border-b py-4 md:py-6 bg-white border border-gray-200 rounded-md px-3 md:px-5 lg:px-7 xl:px-10">
       <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded">
         {item.image && (
           <Image
@@ -156,9 +156,9 @@ export default function CartItem({
       </div>
 
       <div className="flex flex-1 flex-col">
-        <h3 className="font-medium">{item.name}</h3>
+        <h3 className="font-medium product-title">{item.name}</h3>
 
-        <p className="text-sm text-gray-500">₦{item.price.toFixed(2)}</p>
+        <p className="normal-text text-gray-500">₦{item.price.toFixed(2)}</p>
 
         {editable && (
           <div className="mt-3">
@@ -172,7 +172,9 @@ export default function CartItem({
       </div>
 
       <div className="flex flex-col items-end justify-between">
-        <span className="font-semibold">₦{item.total.toFixed(2)}</span>
+        <span className="text-bold font-semibold">
+          ₦{item.total.toFixed(2)}
+        </span>
 
         {showRemove && (
           <button

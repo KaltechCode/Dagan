@@ -36,7 +36,7 @@ export default function ProductQuantity({
   }
 
   return (
-    <div className="flex w-fit items-center rounded-lg border">
+    <div className="flex w-fit items-center rounded-lg border border-gray-200">
       <Button variant="ghost" size="icon" onClick={decrease}>
         −
       </Button>
@@ -46,11 +46,16 @@ export default function ProductQuantity({
         min={min}
         max={max}
         value={value}
-        className="w-20 border-0 text-center"
+        className="w-15 text-center border-none! text-sm"
         onChange={(event) => onChange(Number(event.target.value))}
       />
 
-      <Button variant="ghost" size="icon" onClick={increase}>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={increase}
+        className="border-none outline-none focus:outline-none transition-colors"
+      >
         +
       </Button>
     </div>

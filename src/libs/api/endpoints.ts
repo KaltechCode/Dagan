@@ -47,6 +47,8 @@ export const API = {
     FORGOT_PASSWORD: "/auth/forgot-password",
     RESET_PASSWORD: "/auth/reset-password",
     CHANGE_PASSWORD: "/auth/change-password",
+    VERIFY_EMAIL: "/verify-email",
+    RESEND_VERIFICATION: "/resend-verification",
   },
 
   CART: "/cart",

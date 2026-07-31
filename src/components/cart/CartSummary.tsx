@@ -38,7 +38,7 @@ export default function CartSummary({ totals, className }: Props) {
 
   return (
     <div className={className}>
-      <div className="space-y-3 border-t pt-4">
+      <div className="space-y-3 border border-gray-200 p-2  pt-4">
         <div className="flex items-center justify-between">
           <span>Subtotal</span>
 
@@ -63,7 +63,7 @@ export default function CartSummary({ totals, className }: Props) {
           <span>{formatPrice(totals.tax)}</span>
         </div>
 
-        <div className="flex items-center justify-between border-t pt-4 text-lg font-semibold">
+        <div className="flex items-center justify-between border-t border-gray-200 pt-4 text-lg font-semibold">
           <span>Total</span>
 
           <span>{formatPrice(totals.total)}</span>

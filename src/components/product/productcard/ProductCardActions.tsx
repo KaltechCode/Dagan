@@ -7,6 +7,8 @@ interface Props {
   product: Product;
 
   showWishlist: boolean;
+
+  showQuickView: boolean;
 }
 
 export default function ProductCardActions({ product, showWishlist }: Props) {

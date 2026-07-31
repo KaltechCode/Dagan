@@ -37,7 +37,7 @@ export default function ListingToolbar({
   onOpenFilters,
 }: ListingToolbarProps) {
   return (
-    <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between w-[95%] xl:w-[90%] mx-auto">
+    <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between mx-auto border border-gray-200 py-3 px-5 rounded-md">
       <div className="flex flex-wrap items-center gap-3 justify-between w-full">
         {/* <SearchBox value={search} onSearch={onSearch} />
 

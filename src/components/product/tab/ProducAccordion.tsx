@@ -31,7 +31,7 @@ export default function ProductAccordion({ product }: ProductAccordionProps) {
     title: string;
     children: React.ReactNode;
   }) => (
-    <div className="border-b border-gray-200 px-3 mt-2">
+    <div className="border-b border-gray-200 px-3 mt-2 text-justify">
       <button
         type="button"
         onClick={() => toggle(value)}

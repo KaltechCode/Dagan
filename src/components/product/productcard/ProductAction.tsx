@@ -13,12 +13,14 @@ interface ProductActionsProps {
   product: Product;
   showQuantityControl: boolean;
   classname?: string;
+  cartLabel?: boolean;
 }
 
 export default function ProductActions({
   product,
   showQuantityControl,
   classname,
+  cartLabel,
 }: ProductActionsProps) {
   const router = useRouter();
 
@@ -45,7 +47,9 @@ export default function ProductActions({
   }
 
   return (
-    <div className={`space-y-6 w-full col-span-4`}>
+    <div
+      className={`space-y-6 w-full col-span-4 transition-all transition-500`}
+    >
       {product.type === "variable" && (
         <VariationSelector
           attributes={product.attributes}
@@ -53,24 +57,27 @@ export default function ProductActions({
           onChange={updateAttribute}
         />
       )}
-      {showQuantityControl && (
-        <ProductQuantity
-          value={quantity}
-          max={selectedVariation?.stockQuantity ?? product.stockQuantity ?? 999}
-          onChange={setQuantity}
-        />
-      )}
 
-      <div className={`flex flex-col gap-4 justify-between ${classname}`}>
+      <div className={`flex gap-4 ${classname}`}>
+        {showQuantityControl && (
+          <ProductQuantity
+            value={quantity}
+            max={
+              selectedVariation?.stockQuantity ?? product.stockQuantity ?? 999
+            }
+            onChange={setQuantity}
+          />
+        )}
         {product.variations && product.variations.length > 0 ? (
           <AddToCartButton
             productId={product.id}
             quantity={quantity}
             variationId={product.variations[0]?.id}
+            cartLabel={cartLabel}
             // attributes={}
           />
         ) : (
-          <AddToCartButton productId={product.id} />
+          <AddToCartButton productId={product.id} cartLabel={cartLabel} />
         )}
 
         <BuyNowButton

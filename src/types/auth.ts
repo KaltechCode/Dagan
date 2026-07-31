@@ -37,3 +37,9 @@ export interface AuthResponse {
 export interface LogoutRequest {
   refresh_token: string;
 }
+
+export interface EmailResponse<T> {
+  success: boolean;
+  message: string;
+  data: T;
+}

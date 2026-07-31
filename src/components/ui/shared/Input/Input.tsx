@@ -53,7 +53,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={cn(
-              "flex-1 bg-transparent px-3 py-2 outline-none truncate placeholder:truncate overflow-hidden",
+              "flex-1 bg-transparent px-3 py-2 truncate placeholder:truncate overflow-hidden outline-none focus:outline-none",
               className,
             )}
             {...props}

@@ -7,8 +7,8 @@ import { Icon } from "@/components/ui/shared/Icon/Icon";
 
 export default function HeaderCart() {
   return (
-    <Link href="/cart" className="relative p-2">
-      <Icon size={22} className="text-text-pry" name="cart" />
+    <Link href="/cart" className="relative p-2 mr-4">
+      <Icon size={28} className="text-gray-600" name="cart" />
 
       <CartBadge className="absolute -right-2 top-0 bg-bg-pry px-1 rounded-full text-white" />
     </Link>

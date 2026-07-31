@@ -7,7 +7,7 @@ interface ProductListProps {
 
 export default function ProductList({ products }: ProductListProps) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 ">
       {products.map((product) => (
         <ProductListCard key={product.id} product={product} />
       ))}

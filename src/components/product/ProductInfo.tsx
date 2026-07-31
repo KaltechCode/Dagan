@@ -16,7 +16,7 @@ interface Props {
 
 export default function ProductInfo({ product }: Props) {
   return (
-    <div className="space-y-6 border border-gray-200 rounded-md px-5 py-5 xmd:p-7">
+    <div className="space-y-8 border border-gray-200 rounded-md px-5 py-5 xmd:p-7 xl:p-8 2xl:p-10 3k:p-14">
       <ProductTitle title={product.name} />
 
       <ProductPrice
@@ -41,7 +41,12 @@ export default function ProductInfo({ product }: Props) {
       {product.details.material && (
         <ProductInfoDetails html={product.details.material} title="Materials" />
       )}
-      <ProductActions product={product} showQuantityControl={false} />
+
+      <ProductActions
+        product={product}
+        showQuantityControl={true}
+        cartLabel={true}
+      />
 
       {product.details.package_includes && (
         <ProductInfoDetails

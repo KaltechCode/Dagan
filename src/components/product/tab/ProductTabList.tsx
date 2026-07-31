@@ -17,7 +17,7 @@ export default function ProductTabList({
   product,
 }: ProductTabListProps) {
   return (
-    <div className="flex justify-between border-b border-gray-200 px-5">
+    <div className="flex justify-between flex-wrap w-full border-b border-gray-200 px-5 md:px-2 py-3">
       {product.description && (
         <ProductTab
           id="description"

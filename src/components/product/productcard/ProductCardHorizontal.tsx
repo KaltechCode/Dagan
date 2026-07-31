@@ -38,6 +38,7 @@ function ProductCardHorizontal({
           product={product}
           showQuantityControl={false}
           classname="flex-row! col-span-4 mt-3 justify-start gap-5"
+          cartLabel={true}
         />
       </div>
     </Card>

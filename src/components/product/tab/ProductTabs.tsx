@@ -19,23 +19,23 @@ export default function ProductTabs({ product }: ProductTabsProps) {
   const { activeTab, setActiveTab } = useProductTabs();
 
   return (
-    <section className="md:col-span-2">
+    <section className="md:col-span-2 lg:grid grid-cols-5">
       {/* Mobile & Tablet */}
       <div className="md:hidden border border-gray-200 py-5 px-5 rounded-md xmd:p-7">
         <ProductAccordion product={product} />
       </div>
 
       {/* Desktop */}
-      <div className="hidden md:block border border-gray-200 py-5rounded-md py-5">
+      <div className="hidden md:block border border-gray-200 rounded-md lg:col-span-3">
         <ProductTabList
           activeTab={activeTab}
           onChange={setActiveTab}
           product={product}
         />
 
-        <div className="px-5 w-[80%]">
+        <div className="px-5 w-[100%]">
           <ProductTabPanel active={activeTab === "description"}>
-            <DescriptionTab html={product.description} />
+            <TabsBox html={product.description} />
           </ProductTabPanel>
 
           {product.details?.features && (
@@ -74,6 +74,12 @@ export default function ProductTabs({ product }: ProductTabsProps) {
           <ProductTabPanel active={activeTab === "shipping"}>
             <ShippingReturnsTab />
           </ProductTabPanel>
+        </div>
+      </div>
+
+      <div className="hidden lg:grid col-span-2">
+        <div className="h-full w-full flex justify-center items-center">
+          <h3>No Reviews Yet</h3>
         </div>
       </div>
     </section>

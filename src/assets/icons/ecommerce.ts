@@ -6,9 +6,9 @@ import {
   Truck,
   Tag,
   Store,
-  Handbag,
-  UserRound,
-  DollarSign,
+  CircleUserRound,
+  Menu,
+  Search,
 } from "lucide-react";
 
 import { BiSupport } from "react-icons/bi";
@@ -18,7 +18,9 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { LuDollarSign } from "react-icons/lu";
 
 export const ecommerceIcons = {
-  cart: Handbag,
+  cart: ShoppingCart,
+  search: Search,
+  menu: Menu,
 
   wishlist: Heart,
 
@@ -32,9 +34,9 @@ export const ecommerceIcons = {
 
   store: Store,
 
-  bag: Handbag,
+  bag: ShoppingCart,
 
-  user: UserRound,
+  user: CircleUserRound,
 };
 
 export const ecommerceReactIcons = {

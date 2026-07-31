@@ -5,12 +5,12 @@ export default function HeaderLogo() {
   return (
     <Link href="/" className="shrink-0">
       <Image
-        src="/Dagan-logo.png"
+        src="/dagan-internation-market-logo.png"
         alt="Store Logo"
         width={250}
         height={100}
         priority
-        className="aspect-[7/2] w-[180px]"
+        className=" w-[180px]"
       />
     </Link>
   );

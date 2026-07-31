@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { User } from "lucide-react";
+import { Icon } from "@/components/ui/shared/Icon/Icon";
 
 export default function HeaderAccount() {
   return (
@@ -10,7 +10,7 @@ export default function HeaderAccount() {
       className="rounded-lg p-2 transition hover:bg-[var(--secondary)]"
       aria-label="My Account"
     >
-      <User size={22} />
+      <Icon name="user" size={28} className="text-gray-600" />
     </Link>
   );
 }

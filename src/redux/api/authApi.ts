@@ -9,6 +9,7 @@ import type {
   ResetPasswordRequest,
   ChangePasswordRequest,
   LogoutRequest,
+  EmailResponse,
 } from "@/types/auth";
 
 export const authApi = baseApi.injectEndpoints({
@@ -75,6 +76,30 @@ export const authApi = baseApi.injectEndpoints({
 
       invalidatesTags: ["Customer"],
     }),
+
+    verifyEmail: builder.mutation<
+      EmailResponse<{ verified: boolean }>,
+      { token: string }
+    >({
+      query: ({ token }) => ({
+        url: API.AUTH.VERIFY_EMAIL,
+        method: "GET",
+        params: {
+          token,
+        },
+      }),
+    }),
+
+    resendVerification: builder.mutation<
+      EmailResponse<boolean>,
+      { email: string }
+    >({
+      query: (body) => ({
+        url: API.AUTH.RESEND_VERIFICATION,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -92,4 +117,8 @@ export const {
   useResetPasswordMutation,
 
   useChangePasswordMutation,
+
+  useVerifyEmailMutation,
+
+  useResendVerificationMutation,
 } = authApi;

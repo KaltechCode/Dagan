@@ -4,10 +4,10 @@
 
 :root {
   --text-primary: #010f1c;
-  --text-secondary: #678e61;
+  --text-secondary: #014b30;
   --text-other: #55585b;
   --bg-primary: #014b30;
-  --bg-secondary: #569900;
+  --bg-secondary: #e3fbd7;
   --bg-other: #f3f3f3;
   --bg-gradient: hsla(112, 19%, 55%, 0.6);
 }
@@ -15,7 +15,7 @@
 @theme inline {
   --color-secondary: var(--text-secondary);
   --color-primary: var(--text-primary);
-  --color-text-pry: var(--text-primary);
+  --color-secondary: var(--text-secondary);
   --color-text-sdy: var(--text-secondary);
   --color-bg-sdy: var(--bg-secondary);
   --color-bg-pry: var(--bg-primary);
@@ -114,7 +114,7 @@ body {
   font-family: jost;
   font-weight: 500;
   font-style: Medium;
-  font-size: clamp(18px, 3vw, 36px);
+  font-size: clamp(28px, 3vw, 36px);
   line-height: 48px;
   letter-spacing: 0%;
   vertical-align: middle;

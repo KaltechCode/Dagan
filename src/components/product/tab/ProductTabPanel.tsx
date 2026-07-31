@@ -12,5 +12,5 @@ export default function ProductTabPanel({
     return null;
   }
 
-  return <div className="py-8">{children}</div>;
+  return <div className="pt-5 pb-4">{children}</div>;
 }

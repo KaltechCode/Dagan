@@ -71,12 +71,8 @@ export default function MobileMenu({ trigger }: Props) {
 
   return (
     <>
-      <div onClick={() => setOpen(true)}>
-        {trigger ?? (
-          <button className="rounded-md p-2 hover:bg-gray-100">
-            <Menu size={24} />
-          </button>
-        )}
+      <div onClick={() => setOpen(true)} className="h-[28px]">
+        {trigger}
       </div>
 
       {/* Overlay */}
