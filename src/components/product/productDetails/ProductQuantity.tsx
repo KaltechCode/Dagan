@@ -10,6 +10,8 @@ interface ProductQuantityProps {
 
   max?: number;
 
+  quantityClass?: string;
+
   onChange(value: number): void;
 }
 
@@ -18,6 +20,7 @@ export default function ProductQuantity({
   min = 1,
   max = 999,
   onChange,
+  quantityClass,
 }: ProductQuantityProps) {
   function decrease() {
     if (value <= min) {
@@ -36,7 +39,9 @@ export default function ProductQuantity({
   }
 
   return (
-    <div className="flex w-fit items-center rounded-lg border border-gray-200">
+    <div
+      className={`flex w-fit justify-between p-1 px-[5%] items-center rounded-full border border-gray-200 ${quantityClass}`}
+    >
       <Button variant="ghost" size="icon" onClick={decrease}>
         −
       </Button>
@@ -46,7 +51,7 @@ export default function ProductQuantity({
         min={min}
         max={max}
         value={value}
-        className="w-15 text-center border-none! text-sm"
+        className="w-15 text-center border! text-sm border-gray-50! rounded-[10px]"
         onChange={(event) => onChange(Number(event.target.value))}
       />
 

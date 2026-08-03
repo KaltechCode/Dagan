@@ -14,6 +14,10 @@ interface ProductActionsProps {
   showQuantityControl: boolean;
   classname?: string;
   cartLabel?: boolean;
+
+  cartClass?: string;
+  buyClass?: string;
+  quantityClass?: string;
 }
 
 export default function ProductActions({
@@ -21,6 +25,9 @@ export default function ProductActions({
   showQuantityControl,
   classname,
   cartLabel,
+  cartClass,
+  buyClass,
+  quantityClass,
 }: ProductActionsProps) {
   const router = useRouter();
 
@@ -48,7 +55,7 @@ export default function ProductActions({
 
   return (
     <div
-      className={`space-y-6 w-full col-span-4 transition-all transition-500`}
+      className={`space-y-6 w-full col-span-4 transition-all transition-500 `}
     >
       {product.type === "variable" && (
         <VariationSelector
@@ -66,6 +73,7 @@ export default function ProductActions({
               selectedVariation?.stockQuantity ?? product.stockQuantity ?? 999
             }
             onChange={setQuantity}
+            quantityClass={quantityClass}
           />
         )}
         {product.variations && product.variations.length > 0 ? (
@@ -74,16 +82,23 @@ export default function ProductActions({
             quantity={quantity}
             variationId={product.variations[0]?.id}
             cartLabel={cartLabel}
+            cartClass={cartClass}
+
             // attributes={}
           />
         ) : (
-          <AddToCartButton productId={product.id} cartLabel={cartLabel} />
+          <AddToCartButton
+            productId={product.id}
+            cartLabel={cartLabel}
+            cartClass={cartClass}
+          />
         )}
 
         <BuyNowButton
           loading={addingToCart}
           disabled={product.type === "variable" && !selectedVariation}
           onClick={handleBuyNow}
+          buyClass={buyClass}
         />
       </div>
     </div>

@@ -51,8 +51,11 @@ const navigation = [
 
 export default function Navbar() {
   return (
-    <nav aria-label="Primary Navigation" className="relative py-3">
-      <div className="mx-auto flex h-14 items-center justify-between lg:px-8">
+    <nav
+      aria-label="Primary Navigation"
+      className="relative py-3 w-[95%] 3k:w-[90%] mx-auto"
+    >
+      <div className="mx-auto flex h-14 items-center justify-between">
         {/* Desktop */}
 
         <div className="hidden lg:flex lg:flex-1 lg:gap-5 xl:gap-10">

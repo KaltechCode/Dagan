@@ -12,7 +12,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ data }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-bg-other h-[80vh]">
+    <section className="relative overflow-hidden bg-bg-other h-[80vh] md:h-[70vh] max-h-[800px]">
       <Image
         src={data.image[0]}
         alt={data.title}
@@ -58,9 +58,9 @@ export default function HeroSection({ data }: HeroSectionProps) {
         className="aspect-video w-[80px] lg:w-[100px] absolute right-[16%] bottom-[40%] xmd:bottom-[45%] md:bottom-[50%] lg:bottom-[58%] lg:right-[25%] xl:right-[30%] z-10"
       />
 
-      <div className="absolute inset-0 " />
-      <div className="w-[90%] mx-auto absolute  z-20  top-28 items-center ml-[3%]">
-        <div className="w-[90%] sm:w-[80%] xmd:w-[70%]  lg:w-[60%] mx-auto lg:ml-20">
+      <div className="absolute inset-0 w-full " />
+      <div className="w-[95%] 3k:w-[90%] mx-auto absolute  z-20  top-28 items-center ml-[2.5%] 3k:ml-[5%]">
+        <div className="w-[90%] sm:w-[80%] xmd:w-[70%]  lg:w-[60%]">
           <Image
             src={"/images/banners/subtitle.png"}
             alt={data.title}

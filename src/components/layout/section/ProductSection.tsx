@@ -32,7 +32,7 @@ export default function ProductsSection({
   type,
 }: ProductsSectionProps) {
   return (
-    <Section>
+    <Section className="bg-[#FFFFF1]">
       <SectionHeader
         title={title}
         subtitle={subtitle}

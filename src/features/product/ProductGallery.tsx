@@ -16,11 +16,11 @@ export default function ProductGallery({ product }: Props) {
   console.log("Image", image);
 
   return (
-    <div className="border border-gray-200 py-5 px-5 rounded-md xmd:p-7 xl:p-10 2xl:p-12 3k:p-16">
+    <div className="border border-gray-200 py-5 px-5 rounded-md xmd:p-7 xl:p-10 2xl:p-12 3k:p-12">
       <ProductImage
         src={image}
         alt={product.name}
-        className="aspect-square xmd:col-span-3 lg:col-span-4 lg:order-2 border border-gray-200 rounded-md "
+        className="aspect-square xmd:col-span-3 lg:col-span-4 lg:order-2 border border-gray-100 rounded-md "
         priority
       />
 

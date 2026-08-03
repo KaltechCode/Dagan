@@ -7,10 +7,17 @@ interface Props {
 
   disabled?: boolean;
 
+  buyClass?: string;
+
   onClick(): void;
 }
 
-export default function BuyNowButton({ loading, disabled, onClick }: Props) {
+export default function BuyNowButton({
+  loading,
+  disabled,
+  onClick,
+  buyClass,
+}: Props) {
   return (
     <Button
       variant="secondary"
@@ -18,7 +25,7 @@ export default function BuyNowButton({ loading, disabled, onClick }: Props) {
       disabled={disabled}
       onClick={onClick}
       size="md"
-      className="px-3!"
+      className={`${buyClass}`}
     >
       Buy Now
     </Button>

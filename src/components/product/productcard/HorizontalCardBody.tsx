@@ -42,19 +42,19 @@ export default function HorizontalCardBody({
         <ProductTitleTwo>{product.name}</ProductTitleTwo>
       </Link>
 
-      {showRating && (
-        <ProductRating
-          rating={Number(product.averageRating)}
-          reviews={product.ratingCount}
-        />
-      )}
-
       <ProductPrice
         price={product.price}
         regularPrice={product.regularPrice}
         salePrice={product.salePrice}
         onSale={product.onSale}
       />
+
+      {showRating && (
+        <ProductRating
+          rating={Number(product.averageRating)}
+          reviews={product.ratingCount}
+        />
+      )}
     </div>
   );
 }

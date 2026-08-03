@@ -77,7 +77,7 @@ export default function ProductPrice({
 }: ProductPriceProps) {
   if (onSale) {
     return (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mt-2">
         <span className="text-[17px] font-semibold text-primary">
           {formatCurrency(salePrice)}
         </span>

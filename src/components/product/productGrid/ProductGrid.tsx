@@ -12,7 +12,7 @@ interface Props {
 export default function ProductGrid({ products, loading }: Props) {
   if (loading) {
     return (
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 border border-gray-200 rounded-md">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 border border-gray-50 rounded-md">
         {Array.from({ length: 8 }).map((_, index) => (
           <div
             key={index}

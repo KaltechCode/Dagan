@@ -8,10 +8,8 @@ interface SectionProps {
 
 export default function Section({ children, className = "" }: SectionProps) {
   return (
-    <section
-      className={`py-8 md:py-10 lg-py-16 2xl:py-18 ${className} bg-white`}
-    >
-      <div className="w-[95%] xl:w-[90%] mx-auto">{children}</div>
+    <section className={`py-8 md:py-10 lg-py-16 2xl:py-18 ${className}`}>
+      <div className="w-[95%] 3k:w-[90%] mx-auto">{children}</div>
     </section>
   );
 }

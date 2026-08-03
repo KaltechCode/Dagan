@@ -47,6 +47,13 @@ export default function ProductCardBody({
         <ProductTitleTwo>{product.name}</ProductTitleTwo>
       </Link>
 
+      <ProductPrice
+        price={product.price}
+        regularPrice={product.regularPrice}
+        salePrice={product.salePrice}
+        onSale={product.onSale}
+      />
+
       {showRating && (
         <ProductRating
           rating={Number(product.averageRating)}
@@ -54,13 +61,6 @@ export default function ProductCardBody({
           shop={shop}
         />
       )}
-
-      <ProductPrice
-        price={product.price}
-        regularPrice={product.regularPrice}
-        salePrice={product.salePrice}
-        onSale={product.onSale}
-      />
     </div>
   );
 }

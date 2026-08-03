@@ -12,5 +12,12 @@ interface Props {
 }
 
 export default function ProductCardActions({ product, showWishlist }: Props) {
-  return <ProductActions product={product} showQuantityControl={false} />;
+  return (
+    <ProductActions
+      product={product}
+      classname="flex-col"
+      showQuantityControl={false}
+      cartClass="px-4 py-3"
+    />
+  );
 }

@@ -98,7 +98,7 @@ body {
 .product-category {
   color: var(--bg-primary);
   font-family: var(--font-jost);
-  font-size: 10px;
+  font-size: clamp(12px, 5vw, 18px);
   font-weight: 500;
 }
 .product-title {

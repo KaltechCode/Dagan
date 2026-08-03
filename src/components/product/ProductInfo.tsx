@@ -45,7 +45,11 @@ export default function ProductInfo({ product }: Props) {
       <ProductActions
         product={product}
         showQuantityControl={true}
-        cartLabel={true}
+        cartLabel={false}
+        classname="flex-col xmd:flex-row xl:flex-row"
+        cartClass={"py-4 xmd:px-8 xl:px-4 2xl:px-8"}
+        buyClass={"py-4 2xl:px-8"}
+        quantityClass={"w-full xmd:w-fit xl:w-fit"}
       />
 
       {product.details.package_includes && (

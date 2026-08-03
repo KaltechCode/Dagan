@@ -18,8 +18,8 @@ function ThreeColumsSection({ products }: { products: Product[] }) {
     categories,
   } = useHomepage();
   return (
-    <div className="bg-white py-24 md:py-28 lg-py-32 2xl:py-36 w-[90%] 3k:w-[80%] mx-auto">
-      <div className="grid grid-cols-1 grid-rows-1 gap-7 xl:gap-5 md:grid-cols-2 xl:grid-cols-3">
+    <div className="bg-white py-24 md:py-28 lg-py-32 2xl:py-36 w-[95%] 3k:w-[90%] mx-auto">
+      <div className="grid grid-cols-1 grid-rows-1 gap-7 xl:gap-10 2xl:gap-18 3k:gap-18 md:grid-cols-2 xl:grid-cols-3">
         <VegetablesBanner />
 
         <HorizontalLayoutBox title="Top Selling Products" products={products} />

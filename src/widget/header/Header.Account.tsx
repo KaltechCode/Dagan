@@ -7,7 +7,7 @@ export default function HeaderAccount() {
   return (
     <Link
       href="/account"
-      className="rounded-lg p-2 transition hover:bg-[var(--secondary)]"
+      className="rounded-lg transition hover:bg-[var(--secondary)]"
       aria-label="My Account"
     >
       <Icon name="user" size={28} className="text-gray-600" />

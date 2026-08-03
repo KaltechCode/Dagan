@@ -13,7 +13,7 @@ function FourItemBox({
 }) {
   // const parentCategories = items.filter((item) => item.parentId == 0);
   return (
-    <div className=" rounded-[5px] p-4 py-4 border-2 border-[#f3f3f3]">
+    <div className=" rounded-[10px] p-4 py-4 border-2 border-[#f3f3f3]">
       <div className="grid grid-cols-2 grid-rows-2 gap-4">
         {items.slice(index, count).map((item: Category, index: number) => {
           return (

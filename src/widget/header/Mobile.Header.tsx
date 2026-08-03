@@ -13,34 +13,36 @@ export default function MobileHeader() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white">
       <Topbar />
-      <div className="flex items-center justify-between  px-1  sm:px-5 py-3 px-2 pr-4 w-full">
-        {/* logo */}
-        <div className="flex items-center gap-4 ">
-          {/* <HeaderMenuButton /> */}
+      <div className="w-full bg-white">
+        <div className="flex items-center justify-between w-[95%] w-[90%] mx-auto py-3">
+          {/* logo */}
+          <div className="flex items-center gap-4 ">
+            {/* <HeaderMenuButton /> */}
 
-          <HeaderLogo />
-        </div>
+            <HeaderLogo />
+          </div>
 
-        {/* search */}
-        <HeaderSearch />
+          {/* search */}
+          <HeaderSearch />
 
-        {/* Actions */}
-        <div className="flex items-center">
-          <HeaderAccount />
+          {/* Actions */}
+          <div className="flex items-center">
+            <HeaderAccount />
 
-          <HeaderCart />
+            <HeaderCart />
 
-          <div className="relative  z-0 w-full border-b border-gray-200 bg-white">
-            <MobileMenu
-              trigger={
-                <button
-                  aria-label="Open Menu"
-                  className="rounded-md transition hover:bg-gray-100 mt-.5"
-                >
-                  <Icon size={28} className="text-gray-600" name="menu" />
-                </button>
-              }
-            />
+            <div className="relative  z-0 w-full border-b border-gray-200 bg-white">
+              <MobileMenu
+                trigger={
+                  <button
+                    aria-label="Open Menu"
+                    className="rounded-md transition hover:bg-gray-100 mt-.5"
+                  >
+                    <Icon size={28} className="text-gray-600" name="menu" />
+                  </button>
+                }
+              />
+            </div>
           </div>
         </div>
       </div>

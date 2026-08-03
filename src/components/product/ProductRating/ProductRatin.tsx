@@ -63,7 +63,7 @@ export default function ProductRating({
 }: ProductRatingProps) {
   return (
     <div
-      className={`flex items-center gap-3 mt-3 ${shop && "flex-col gap-3 items-start"}`}
+      className={`flex items-center gap-3 mt-2 ${shop && "flex-col gap-3 items-start"}`}
     >
       <div className="flex">
         {Array.from({

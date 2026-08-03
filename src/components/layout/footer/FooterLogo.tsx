@@ -7,7 +7,7 @@ export default function FooterLogo() {
     <div className="space-y-6 col-span-1 w-full md:col-span-2 xl:col-span-3">
       <Link href="/" className="inline-flex">
         <Image
-          src="/Dagan-white-logo.png"
+          src="/dagan-internation-market-logo.png"
           alt="Dagan International Market"
           width={180}
           height={55}

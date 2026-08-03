@@ -63,7 +63,7 @@ export default function CategoriesDropdown() {
       </button>
 
       <div
-        className={`absolute left-0 top-full z-50 mt-1 w-200 overflow-hidden rounded-md border border-gray-200 bg-white shadow-xl transition-all duration-300 ${
+        className={`absolute left-0 top-full z-50 mt-3 w-[60vw] h-[65vh] overflow-hidden rounded-md border border-gray-200 bg-white shadow-xl transition-all duration-300 ${
           open
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-2 opacity-0"

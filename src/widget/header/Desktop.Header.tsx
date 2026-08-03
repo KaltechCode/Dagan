@@ -9,10 +9,12 @@ export default function DesktopHeader() {
   return (
     <header className="sticky top-0 z-50">
       <Topbar />
-      <div className="mx-auto flex h-20 items-center justify-between gap-8 px-6 bg-white">
-        <HeaderLogo />
-        <HeaderSearch />
-        <HeaderActions />
+      <div className="w-full bg-white">
+        <div className="flex h-20 items-center justify-between gap-8 bg-white w-[95%] 3k:w-[90%] mx-auto">
+          <HeaderLogo />
+          <HeaderSearch />
+          <HeaderActions />
+        </div>
       </div>
       <div className="relative z-50 border-b border-gray-200 bg-bg-pry">
         <Navbar />

@@ -47,7 +47,7 @@ export default function ProductCard({
   return (
     <Card
       className={cn(
-        "group overflow-hidden bg-white cursor-pointer transition-all transition-500 relative left-0 top-0",
+        "group hover:shadow-lg overflow-hidden bg-white cursor-pointer transition-all transition-500 relative left-0 top-0",
         className,
       )}
       ref={ref}
@@ -65,7 +65,7 @@ export default function ProductCard({
       />
 
       <div
-        className={`left-0 z-10 absolute bg-white w-full px-4 py-9 transition-all ease-in-out duration-400 ${open ? "bottom-0" : "-bottom-34"}`}
+        className={`left-0 z-10 absolute bg-white w-full px-4 py-9 transition-all ease-in-out duration-600 ${open ? "bottom-0" : "-bottom-40"}`}
       >
         <ProductCardActions
           product={product}

@@ -1,6 +1,7 @@
 import { FaFacebookF, FaInstagram, FaPinterestP } from "react-icons/fa";
 import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
 
 export const socialIcons = {
   facebook: FaFacebookF,
@@ -9,4 +10,5 @@ export const socialIcons = {
   pinterest: FaPinterestP,
   linkedin: FaLinkedinIn,
   youtube: FaYoutube,
+  tiktok: FaTiktok,
 };

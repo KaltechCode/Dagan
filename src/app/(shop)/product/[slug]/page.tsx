@@ -21,8 +21,8 @@ export default async function page({ params }: Props) {
   return (
     <div className="bg-white">
       <Header />
-      <div className="py-8 w-[95%] xl:w-[90%] mx-auto bg-white w">
-        <div className="grid gap-10 md:grid-cols-2 xl:gap-16 2xl:gap-24">
+      <div className=" bg-white w">
+        <div className="grid gap-10 md:grid-cols-2 xl:gap-16 2xl:gap-24 w-[95%] xl:w-[90%] mx-auto py-8 xl:py-16">
           <ProductGallery product={product} />
 
           <ProductInfo product={product} />

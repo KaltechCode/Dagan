@@ -62,7 +62,11 @@ export default function ProductListCard({ product }: ProductListCardProps) {
             salePrice={product.salePrice}
           />
 
-          <AddToCartButton productId={product.id} onClick={addToCart} />
+          <AddToCartButton
+            productId={product.id}
+            onClick={addToCart}
+            cartClass="px-8 py-3"
+          />
         </div>
       </div>
     </div>

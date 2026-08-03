@@ -19,7 +19,7 @@ function ProductCardHorizontal({
   return (
     <Card
       className={cn(
-        "group overflow-hidden bg-white grid gap-5 grid-rows-1 grid-cols-3 p-3 py-4 items-center rounded-[10px] border border-gray-200",
+        "group hover:shadow-xl duration-300 cursor-pointer overflow-hidden bg-white grid gap-5 grid-rows-1 grid-cols-3 p-3 py-4 items-center rounded-[10px] border border-gray-200",
         className,
       )}
     >
@@ -39,6 +39,8 @@ function ProductCardHorizontal({
           showQuantityControl={false}
           classname="flex-row! col-span-4 mt-3 justify-start gap-5"
           cartLabel={true}
+          cartClass="px-8"
+          buyClass="px-4"
         />
       </div>
     </Card>
